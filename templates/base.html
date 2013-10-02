@@ -8,51 +8,70 @@
 <body>
 	<div id="container">
 
-		<h1>Report an Issue</h1>
+		<div id="form-cont">
 
-		<form action="/submit" method="post" name="issue-form" id="issue-form">
-			<div class="form-field" id="drop-down">
-				<label>Type of Issue:</label>
-				<select id= "issue" name="issue-option">
-					<option id="first-op" value="select-one">select one</option>
-					<option value="missing-info">Missing Information</option>
-					<option value="broken-indicator">Broken Indicator</option>
-					<option value="site-malfunction">Site Malfunction</option>
-					<option value="other">Other</option>
-				</select> <span id="issue-error">*Please select an issue</span>
-			</div>
-		<!--
-			<div class="form-field">
-				<label>Topic:</label>
-				<input name="topic"/>
-			</div>
-		-->
-			<div class="form-field" id="user-name">
-				<label>Your name: (optional)</label>
-				<input id="name-inp" name="user-name"/>
+			<h1>Report an Issue</h1>
+
+			<form action="/submit" method="post" name="issue-form" id="issue-form">
+				<div class="form-field" id="drop-down">
+					<label>Type of Issue:</label>
+					<select id= "issue" name="issue-option">
+						<option id="first-op" value="select-one">select one</option>
+						<option value="missing-info">Missing Information</option>
+						<option value="broken-indicator">Broken Indicator</option>
+						<option value="site-malfunction">Site Malfunction</option>
+						<option value="other">Other</option>
+					</select> <span id="issue-error">*Please select an issue</span>
+					</div>
+			<!--
+				<div class="form-field">
+					<label>Topic:</label>
+					<input name="topic"/>
+				</div>
+			-->
+				<div class="form-field" id="user-name">
+					<label>Your name: (optional)</label>
+					<input id="name-inp" name="user-name"/>
+				</div>
+
+				<div class="form-field" id="email">
+					<label>Your Email: (optional)</label>
+					<input id="email-inp" name="user-email"/>
+				</div>
+
+				<div class="form-field">
+					<label>Describe your issue:</label>
+					<textarea id="content-inp" name="issue-content"></textarea>
+				</div>
+
+				<div class="form-field" id="follow-up">
+					<input type="checkbox" name="follow-up"/>
+					<label>Would you like a follow up response?</label>
+				</div>
+
+				<div class="form-field" id="submit-box">
+					<input id="submit-btn" type="submit" value="Submit Report">
+				</div>
+
+			</form>
+		</div>
+
+		<div id="confirm-box">
+			<h1>Thank You!</h1>
+			<p>
+				<p>We have recieved your submission.
+				</p>
+				<p>We appreciate your feedback. If you would like any further information feel free to email us at: <a href= "mailto:info@provplan.org" >info@provplan.org</a></p>
+			</p>
+
+			<div id="confirm-img">
+				<img src="{{url_for('static', filename='images/pphand.png')}}" alt="Prov Plan" width="90" height="auto" >
+				<img src="{{url_for('static', filename='images/HUBlogo.png')}}" alt="RIDataHUB" width="80" height="auto" >
 			</div>
 
-			<div class="form-field" id="email">
-				<label>Your Email: (optional)</label>
-				<input id="email-inp" name="user-email"/>
-			</div>
+		</div>
+	</div><!--End container-->
 
-			<div class="form-field">
-				<label>Describe your issue:</label>
-				<textarea id="content-inp" name="issue-content"></textarea>
-			</div>
-
-			<div class="form-field" id="follow-up">
-				<input type="checkbox" name="follow-up"/>
-				<label>Would you like a follow up response?</label>
-			</div>
-
-			<div class="form-field" id="submit-box">
-				<input id="submit-btn" type="submit" value="Submit Report">
-			</div>
-
-		</form>
-	</div>
 	<script src="{{url_for('static', filename='JS/jquery.min.js
 ')}}"></script>
 	<script src="{{url_for('static', filename='JS/base.js')}}"></script>

@@ -41,7 +41,14 @@ $("#issue-form").submit(function(e){
 			dataType:"json",
 			success: function(data) {
 				if(data.status == "success"){
-					$('#container').children().remove();
+					$('#form-cont').children().remove();
+
+					var container = document.getElementById("container");
+					var confirmBox = document.getElementById("confirm-box");
+
+					container.style.border = "2px solid #38C91F";
+					confirmBox.style.display = "block";
+
 				}
 		    },
 		    error:function(jqXHR, textStatus, errorThrown){
