@@ -2,35 +2,6 @@ body, html{
 	font-family: Verdana, Helvetica, Arial, sans-serif;
 }
 
-#container{
-	width: 600px;
-	height: 342px;
-	padding: 30px;
-	margin: 0 auto;
-	font-size: 11px;
-	background-color: #fff;
-	border: 1px solid #e3e3e3;
-	/*border: 2px solid #38C91F;*/
-}
-
-#container h1{
-	margin: 0 0 20px 0;
-	font-size: 17px;
-}
-
-#issue-error{
-	display: none;
-	color: red;
-}
-
-/**{
-  border: none;
-}*/
-
-.form-field{
-	height: 55px;
-}
-
 label {
 	float: left;
 	text-align: right;
@@ -56,6 +27,42 @@ textarea{
 	font-size: 11px;
 }
 
+#container{
+	width: 600px;
+	height: 342px;
+	padding: 30px;
+	margin: 0 auto;
+	font-size: 11px;
+	background-color: #fff;
+	border: 1px solid #e3e3e3;
+	/*border: 2px solid #38C91F;*/
+}
+
+#container h1{
+	color: #6A6970;
+	margin: 0 0 20px 0;
+	font-size: 17px;
+}
+
+#intro{
+	color: #3285DE;
+	font-size: 11.5px;
+	margin: -15px 4px 0 0;
+}
+
+#issue-form{
+	margin: 20px 0 0 0;
+}
+
+#issue-error{
+	display: none;
+	color: red;
+}
+
+.form-field{
+	height: 55px;
+}
+
 #first-op{
 	display: none;
 
@@ -73,8 +80,35 @@ textarea{
 	margin-top: -3px;
 }
 
+#content-inp{
+	margin-bottom: 10px;
+}
+
+#email-inp{
+	margin-bottom: 5px;
+}
+
+#email-error{
+	display: none;
+	margin-left: 106px;
+	color:red;
+}
+
+#inval-email{
+	display: none;
+	margin-left: 106px;
+	color:red;
+}
+
+#content-err{
+	display: none;
+ 	margin-left: 300px;
+ 	color: red;
+
+}
 #follow-up{
 	height: 30px;
+	margin: 65px 0 0 33px;
 	margin-top: 65px;
 }
 
@@ -90,7 +124,7 @@ textarea{
 }
 
 #submit-box{
-	margin-top: 6px;
+	margin: 6px 0 0 33px;
 }
 
 #submit-btn{

@@ -24,20 +24,61 @@ $("#issue-form").submit(function(e){
 	e.preventDefault();
 
 	var iss_select = $('#issue');
+	var content = $.trim($('#content-inp').val());
+	var followup_input = $('#followup-input');
+	var email_input = $.trim($('#email-inp').val());
+	
+
+
 	if(iss_select.val() == "select-one"){
+		displaySelectError();
 
-		var iss_err = document.getElementById("issue-error");
-		iss_err.style.display = 'inline';
+	}else{// continue processing form...
 
-		iss_select.change(function(){
-			iss_err.style.display = 'none';
-		})
+		// check for content 
+		if(content.length > 0){
+			//check that email is valid
+			if(validateEmail(email_input) == true){
+
+				//check that followup is selected
+				if(followup_input.is(':checked')){
+
+					//check that the email is entered
+					if(email_input.length > 0){
+
+						//make sure email is valid
+						if(validateEmail(email_input) == true){
+							sendForm(this);
+
+						}else{
+							displayInvalidEmailError();
+						}
+
+					}else{
+						displayInvalidEmailError();
+					}
+
+				}else{
+					sendForm(this);
+				}
+			}else{
+				displayInvalidEmailError();
+			}
+		}else{
+			displayContentError();
+		}
 	}
-	else{
-		$.ajax({
+
+});
+/*----------------------------------------*/
+
+
+/*---------Utility Functions--------------*/
+function sendForm(form){
+	$.ajax({
 			method: 'POST',
 			url:"/submit",
-			data: $(this).serialize(),
+			data: $(form).serialize(),
 			dataType:"json",
 			success: function(data) {
 				if(data.status == "success"){
@@ -56,15 +97,40 @@ $("#issue-form").submit(function(e){
 
 		    },
 		})
-	}
-});
+}
+
+function validateEmail(email){
+	var emailFilter = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    return emailFilter.test(email);
+}
+
+function displaySelectError(){
+	var iss_err = document.getElementById("issue-error");
+	iss_err.style.display = 'inline';
+
+	$('#issue').change(function(){
+		iss_err.style.display = 'none';
+	})
+}
+
+function displayInvalidEmailError(){
+	var inval_email = document.getElementById("inval-email");
+	inval_email.style.display = 'inline';
+
+	$('#email-inp').click(function(){
+		inval_email.style.display = 'none';
+	})
+}
+
+function displayContentError(){
+	var content_err = document.getElementById("content-err");
+	content_err.style.display = 'inline';
+
+	$('#content-inp').click(function(){
+		content_err.style.display = 'none';
+	})
+}
+
+
 /*----------------------------------------*/
-
-/*
-	[+'data' can be named anything. 
-		-it holds the value of whatever information is retrieved from the server.
-
-	+AJAX simply establishes a hidden connection between the server and the client
-		-it may return a 200 status (ok) or 404 status(not found)
-		-
-		*/

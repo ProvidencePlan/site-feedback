@@ -10,25 +10,21 @@
 
 		<div id="form-cont">
 
-			<h1>Report an Issue</h1>
+			<h1>Give us Feedback</h1>
+			<div id="intro">Is something not working as it should? Let us know</div>
 
 			<form action="/submit" method="post" name="issue-form" id="issue-form">
 				<div class="form-field" id="drop-down">
-					<label>Type of Issue:</label>
+					<label>Topic:</label>
 					<select id= "issue" name="issue-option">
-						<option id="first-op" value="select-one">select one</option>
+						<option id="first-op" value="select-one">Select one</option>
 						<option value="missing-info">Missing Information</option>
 						<option value="broken-indicator">Broken Indicator</option>
 						<option value="site-malfunction">Site Malfunction</option>
 						<option value="other">Other</option>
 					</select> <span id="issue-error">*Please select an issue</span>
 					</div>
-			<!--
-				<div class="form-field">
-					<label>Topic:</label>
-					<input name="topic"/>
-				</div>
-			-->
+
 				<div class="form-field" id="user-name">
 					<label>Your name: (optional)</label>
 					<input id="name-inp" name="user-name"/>
@@ -37,20 +33,22 @@
 				<div class="form-field" id="email">
 					<label>Your Email: (optional)</label>
 					<input id="email-inp" name="user-email"/>
+					<span id="inval-email">*Please enter a valid email </span>
 				</div>
 
 				<div class="form-field">
-					<label>Describe your issue:</label>
+					<label>Description:</label>
 					<textarea id="content-inp" name="issue-content"></textarea>
+					<span id="content-err">*Please give us a description of the problem</span>
 				</div>
 
 				<div class="form-field" id="follow-up">
-					<input type="checkbox" name="follow-up"/>
+					<input id="followup-input" type="checkbox" name="follow-up"/>
 					<label>Would you like a follow up response?</label>
 				</div>
 
 				<div class="form-field" id="submit-box">
-					<input id="submit-btn" type="submit" value="Submit Report">
+					<input id="submit-btn" type="submit" value="Send Report">
 				</div>
 
 			</form>
