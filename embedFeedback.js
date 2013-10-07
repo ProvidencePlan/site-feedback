@@ -126,8 +126,7 @@ $d(function(){
 		bkgrBox = document.createElement("div");
 		bkgrBox.id = "feedback-box";
 		bkgrBox.style.position = "absolute";
-		bkgrBox.style.width = window.innerWidth + "px";
-		bkgrBox.style.height = window.innerHeight + "px"
+		
 		bkgrBox.style.backgroundColor = "#283540";
 		bkgrBox.style.opacity = 0.5;
 		bkgrBox.style.position = "absolute";
@@ -148,8 +147,7 @@ $d(function(){
 		frame.style.padding = 0;
 		frame.style.margin = 0;
 		frame.style.overflow = 'hidden';
-		frame.style.top = (window.innerHeight/2)-(fh/2) + "px";
-		frame.style.left = (window.innerWidth/2)-(fw/2) + "px";
+		
 		frame.scrolling = 'no';
 		frame.style.border = 'none';
 		body.appendChild(frame);
@@ -161,15 +159,20 @@ $d(function(){
 		exitBtn.style.height = 20 + "px";
 		exitBtn.style.position = "absolute";
 		exitBtn.style.zIndex = 12000;
-		exitBtn.style.top = (window.innerHeight/2)-(fh/2) - 6 + "px";
-		exitBtn.style.left = (window.innerWidth/2)+(fw/2) - 15 + "px";	
+	
+		exitBtn.style.opacity = .7;
+		exitBtn.style.cursor="pointer";
+
 		body.appendChild(exitBtn);
 
-		exitBtn.onmouseover = function(){
-			exitBtn.style.border = "2px solid #A6CDFF";
+		positionElements(bkgrBox, frame, exitBtn, fh, fw);
+
+		exitBtn.onmouseover = function(event){
+			exitBtn.style.opacity = 1;
+
 		}
 		exitBtn.onmouseout = function(){
-			exitBtn.style.border = "none";
+			exitBtn.style.opacity = .7;
 		}
 
 		exitBtn.onclick = function(){
@@ -186,9 +189,18 @@ $d(function(){
 			body.removeChild(bkgrBox);
 		}
 
-
-
+		window.onresize = function(event) {
+   			positionElements(bkgrBox, frame, exitBtn, fh, fw);
+		}
 
 	}//end feedback_btn onclick
 
+	function positionElements(bkgrBox, frame, exitBtn, fh, fw){
+		bkgrBox.style.width = window.innerWidth + "px";
+		bkgrBox.style.height = window.innerHeight + "px";
+		frame.style.top = (window.innerHeight/2)-(fh/2) + "px";
+		frame.style.left = (window.innerWidth/2)-(fw/2) + "px";
+		exitBtn.style.top = (window.innerHeight/2)-(fh/2) - 6 + "px";
+		exitBtn.style.left = (window.innerWidth/2)+(fw/2) - 15 + "px";	
+	}
 });

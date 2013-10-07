@@ -15,6 +15,10 @@ $("#name-inp, #email-inp, #content-inp").mouseover(function(){
 $("#name-inp, #email-inp, #content-inp").mouseout(function(){
 	$(this).removeClass('inp-lite');
 })
+
+$("#confirm-img").click(function(){
+	window.open("http://provplan.org/index.php/");
+})
 /*----------------------------------------*/
 
 
