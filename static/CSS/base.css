@@ -1,5 +1,7 @@
 body, html{
 	font-family: Verdana, Helvetica, Arial, sans-serif;
+	margin:0;
+	padding: 0;
 }
 
 label {
@@ -31,7 +33,7 @@ textarea{
 	width: 600px;
 	height: 342px;
 	padding: 30px;
-	margin: 0 auto;
+	/*margin: 0 auto;*/
 	font-size: 11px;
 	background-color: #fff;
 	border: 1px solid #e3e3e3;
@@ -81,11 +83,16 @@ textarea{
 }
 
 #content-inp{
+	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
+#desc-label{
+	margin-top: 10px;
+}
+
 #email-inp{
-	margin-bottom: 5px;
+	margin-bottom: 3px;
 }
 
 #email-error{
@@ -114,13 +121,14 @@ textarea{
 
 #follow-up label{
 	width: 212px;
+	margin-top: 6px;
 	margin-right: 5px;
 }
 
 #follow-up input{
 	width: 16px;
 	height: 15px; 
-	margin-top: 1px;
+	margin-top: 6px;
 }
 
 #submit-box{

@@ -38,7 +38,7 @@ $("#issue-form").submit(function(e){
 		// check for content 
 		if(content.length > 0){
 			//check that email is valid
-			if(validateEmail(email_input) == true){
+			if(validateEmail(email_input) == true || email_input == ""){
 
 				//check that followup is selected
 				if(followup_input.is(':checked')){
@@ -87,7 +87,7 @@ function sendForm(form){
 					var container = document.getElementById("container");
 					var confirmBox = document.getElementById("confirm-box");
 
-					container.style.border = "2px solid #38C91F";
+					//container.style.border = "2px solid #38C91F";
 					confirmBox.style.display = "block";
 
 				}
@@ -99,11 +99,13 @@ function sendForm(form){
 		})
 }
 
+
 function validateEmail(email){
 	var emailFilter = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     return emailFilter.test(email);
 }
+
 
 function displaySelectError(){
 	var iss_err = document.getElementById("issue-error");
@@ -114,6 +116,7 @@ function displaySelectError(){
 	})
 }
 
+
 function displayInvalidEmailError(){
 	var inval_email = document.getElementById("inval-email");
 	inval_email.style.display = 'inline';
@@ -123,6 +126,7 @@ function displayInvalidEmailError(){
 	})
 }
 
+
 function displayContentError(){
 	var content_err = document.getElementById("content-err");
 	content_err.style.display = 'inline';
@@ -131,6 +135,4 @@ function displayContentError(){
 		content_err.style.display = 'none';
 	})
 }
-
-
 /*----------------------------------------*/

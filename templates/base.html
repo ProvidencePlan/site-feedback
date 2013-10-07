@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Form</title>
@@ -37,7 +38,7 @@
 				</div>
 
 				<div class="form-field">
-					<label>Description:</label>
+					<label id="desc-label">Description:</label>
 					<textarea id="content-inp" name="issue-content"></textarea>
 					<span id="content-err">*Please give us a description of the problem</span>
 				</div>
@@ -63,8 +64,12 @@
 			</p>
 
 			<div id="confirm-img">
-				<img src="{{url_for('static', filename='images/pphand.png')}}" alt="Prov Plan" width="90" height="auto" >
-				<img src="{{url_for('static', filename='images/HUBlogo.png')}}" alt="RIDataHUB" width="80" height="auto" >
+				<a href="http://provplan.org/index.php/">
+					<img src="{{url_for('static', filename='images/pphand.png')}}" alt="Prov Plan" width="90" height="auto" >
+				</a>
+				<a href="http://ridatahub.org/">
+					<img src="{{url_for('static', filename='images/HUBlogo.png')}}" alt="RIDataHUB" width="80" height="auto" >
+				</a>
 			</div>
 
 		</div>
