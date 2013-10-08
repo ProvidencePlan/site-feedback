@@ -118,40 +118,47 @@
 
 $d(function(){
 	var feedback_btn = document.getElementById("site-feedback");
-
 	feedback_btn.onclick = function(){
 
 		var body = document.body;
 
-		bkgrBox = document.createElement("div");
+	/*-----transparent div------------------------*/
+		var bkgrBox = document.createElement("div");
 		bkgrBox.id = "feedback-box";
 		bkgrBox.style.position = "absolute";
-		
 		bkgrBox.style.backgroundColor = "#283540";
 		bkgrBox.style.opacity = 0.5;
 		bkgrBox.style.position = "absolute";
 		bkgrBox.style.top = "0px";
 		bkgrBox.style.left = "0px";
 		bkgrBox.style.zIndex = 9999;
+		/*----ie 8------------------------*/
+		bkgrBox.style.filter = "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+		/*--------------------------------*/
 		body.appendChild(bkgrBox);
 
+	/*-----Insert Iframe --------------------------*/
 		var frame = document.createElement('iframe');
 		frame.id = "feedback-frame";
 		var fw = 662;
 		var fh = 404;
-		frame.src = "http://127.0.0.1:5000/"
+		frame.src = "http://10.1.1.155:5000/";
+		frame.src += "?s=" + encodeURIComponent(window.location);
 		frame.style.width = fw + "px";
 		frame.style.height = fh + "px";
 		frame.style.position = "absolute";
 		frame.style.zIndex = 10000;
 		frame.style.padding = 0;
 		frame.style.margin = 0;
-		frame.style.overflow = 'hidden';
-		
+		frame.style.overflow = 'hidden';	
 		frame.scrolling = 'no';
 		frame.style.border = 'none';
+		/*----ie 8------------------------*/
+		frame.frameBorder = 0;
+		/*--------------------------------*/
 		body.appendChild(frame);
 
+	/*-----Include exit Button----------------------*/
 		var exitBtn = document.createElement("img");
 		exitBtn.id = "exit-btn";
 		exitBtn.src = "static/images/closeBtn.png";
@@ -159,14 +166,14 @@ $d(function(){
 		exitBtn.style.height = 20 + "px";
 		exitBtn.style.position = "absolute";
 		exitBtn.style.zIndex = 12000;
-	
 		exitBtn.style.opacity = .7;
 		exitBtn.style.cursor="pointer";
-
 		body.appendChild(exitBtn);
 
+	/*-----Pass Params for Positioning---------------*/
 		positionElements(bkgrBox, frame, exitBtn, fh, fw);
 
+	/*-----Handle Mouse Events-----------------------*/
 		exitBtn.onmouseover = function(event){
 			exitBtn.style.opacity = 1;
 
@@ -189,18 +196,22 @@ $d(function(){
 			body.removeChild(bkgrBox);
 		}
 
+	/*-----Handle Window Resize----------------------*/
 		window.onresize = function(event) {
    			positionElements(bkgrBox, frame, exitBtn, fh, fw);
 		}
 
-	}//end feedback_btn onclick
+	}//end feedback_btn onclick event handler
 
+	/*-----Define Positioning------------------------*/
 	function positionElements(bkgrBox, frame, exitBtn, fh, fw){
-		bkgrBox.style.width = window.innerWidth + "px";
-		bkgrBox.style.height = window.innerHeight + "px";
-		frame.style.top = (window.innerHeight/2)-(fh/2) + "px";
-		frame.style.left = (window.innerWidth/2)-(fw/2) + "px";
-		exitBtn.style.top = (window.innerHeight/2)-(fh/2) - 6 + "px";
-		exitBtn.style.left = (window.innerWidth/2)+(fw/2) - 15 + "px";	
+		var wW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		var wH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+		bkgrBox.style.width = wW + "px";
+		bkgrBox.style.height = wH + "px";
+		frame.style.top = (wH/2)-(fh/2) + "px";
+		frame.style.left = (wW/2)-(fw/2) + "px";
+		exitBtn.style.top = (wH/2)-(fh/2) - 6 + "px";
+		exitBtn.style.left = (wW/2)+(fw/2) - 15 + "px";	
 	}
-});
+});//end doc.ready

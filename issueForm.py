@@ -8,11 +8,11 @@ import json
 
 @app.route("/") # listens at this url 
 def get_template():
-	test = ''
-	return render_template('base.html')
+	return render_template('base.html', referer=request.args.get('s'))
 
 @app.route("/submit", methods=["POST"])#request handler
 def process_form():
+	url = str(request.form.get("ref"))
 	issue_type = str(request.form.get("issue-option"))
 	username = str(request.form.get("user-name"))
 	email = str(request.form.get("user-email"))
@@ -34,14 +34,14 @@ def process_form():
 		email = 'Not provided'
 
 	try:
-		add_record(issue_type, username, email, content, follow_up)
+		add_record(url, issue_type, username, email, content, follow_up)
 		return json.dumps({'status':'success'})
 
-	except Exeception as e:
+	except Exception as e:
 
 		return json.dumps({'status':'error'})
 
-def add_record(issue_type, name, email, content, follow_up):
+def add_record(url, issue_type, name, email, content, follow_up):
 
 	#make connection to database
 	connection = psycopg2.connect("dbname= tpp-site-feedback user= 'zcrosby' host= 'localhost'")
@@ -50,9 +50,9 @@ def add_record(issue_type, name, email, content, follow_up):
 	cursor = connection.cursor()
 
 	#store values in db
-	info = (str(issue_type), str(name), str(email), str(content), follow_up)
+	info = (str(url), str(issue_type), str(name), str(email), str(content), follow_up)
 
-	query = "INSERT INTO issue (issue_type, user_name, user_email, content, follow_up) VALUES (%s, %s, %s, %s, %s)"
+	query = "INSERT INTO issue (url, issue_type, user_name, user_email, content, follow_up) VALUES (%s, %s, %s, %s, %s, %s)"
 
 	cursor.execute(query, info)
 
@@ -68,7 +68,7 @@ def add_record(issue_type, name, email, content, follow_up):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
 
    
 

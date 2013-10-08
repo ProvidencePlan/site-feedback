@@ -51,7 +51,7 @@
 				<div class="form-field" id="submit-box">
 					<input id="submit-btn" type="submit" value="Send Report">
 				</div>
-
+				<input type="hidden" name="ref" value='{{referer}}'>
 			</form>
 		</div>
 
@@ -65,15 +65,14 @@
 
 			<div id="confirm-img">
 				<a href="#">
-					<img src="{{url_for('static', filename='images/pphand.png')}}" alt="Prov Plan" width="150" height="auto" >
+					<img src="{{url_for('static', filename='images/pphand.png')}}" alt="Prov Plan" width="150" height="30" >
 				</a>
 			</div>
 
 		</div>
 	</div><!--End container-->
 
-	<script src="{{url_for('static', filename='JS/jquery.min.js
-')}}"></script>
+	<script src="{{url_for('static', filename='JS/jquery.min.js')}}"></script>
 	<script src="{{url_for('static', filename='JS/base.js')}}"></script>
 </body>
 </html>
