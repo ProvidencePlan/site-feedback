@@ -1,3 +1,4 @@
 *.pyc
 ENV/
 embedTest.html
+settings.py

@@ -1,0 +1,16 @@
+DEBUG = True
+
+DB_HOST = "localhost"
+DB_NAME = "tpp-site-feedback"
+DB_USER = "zcrosby"
+DB_PASSWORD = ""
+
+TOPICS = (
+	("Missing-info", "Missing Information"),
+	("broken-indicator","Broken Indicator"),
+	("site-malfunction","Site Malfunction"),
+	("Other","Other"),
+)
+
+DB_CONNECT_STR = "dbname='{0}' user='{1}' host='{2}' password='{3}'".format(DB_NAME, DB_USER, DB_HOST, DB_PASSWORD)
+

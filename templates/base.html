@@ -18,11 +18,10 @@
 				<div class="form-field" id="drop-down">
 					<label>Topic:</label>
 					<select id= "issue" name="issue-option">
-						<option id="first-op" value="select-one">Select one</option>
-						<option value="missing-info">Missing Information</option>
-						<option value="broken-indicator">Broken Indicator</option>
-						<option value="site-malfunction">Site Malfunction</option>
-						<option value="other">Other</option>
+						<option id="first-op" value="select-one">Please Select a topic</option>
+						{% for t in topics %}
+							<option value='{{t.0}}'>{{t.1}}</option>
+						{% endfor %}
 					</select> <span id="issue-error">*Please select an issue</span>
 					</div>
 

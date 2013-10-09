@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
+app.config.from_object('settings')
 
 import time
 from datetime import datetime
@@ -8,7 +9,8 @@ import json
 
 @app.route("/") # listens at this url 
 def get_template():
-	return render_template('base.html', referer=request.args.get('s'))
+	topic_options = app.config['TOPICS']
+	return render_template('base.html', referer=request.args.get('s'), topics = topic_options)
 
 @app.route("/submit", methods=["POST"])#request handler
 def process_form():
@@ -44,7 +46,7 @@ def process_form():
 def add_record(url, issue_type, name, email, content, follow_up):
 
 	#make connection to database
-	connection = psycopg2.connect("dbname= tpp-site-feedback user= 'zcrosby' host= 'localhost'")
+	connection = psycopg2.connect(app.config['DB_CONNECT_STR'])
 
 	#create cursor (allows interaction with db)
 	cursor = connection.cursor()
@@ -53,7 +55,6 @@ def add_record(url, issue_type, name, email, content, follow_up):
 	info = (str(url), str(issue_type), str(name), str(email), str(content), follow_up)
 
 	query = "INSERT INTO issue (url, issue_type, user_name, user_email, content, follow_up) VALUES (%s, %s, %s, %s, %s, %s)"
-
 	cursor.execute(query, info)
 
 	#solidify changes to the db
@@ -68,7 +69,7 @@ def add_record(url, issue_type, name, email, content, follow_up):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=app.config['DEBUG'], host="0.0.0.0")
 
    
 
