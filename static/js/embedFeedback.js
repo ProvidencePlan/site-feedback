@@ -161,7 +161,7 @@ $d(function(){
 	/*-----Include exit Button----------------------*/
 		var exitBtn = document.createElement("img");
 		exitBtn.id = "exit-btn";
-		exitBtn.src = "static/images/closeBtn.png";
+		exitBtn.src = FEEDBACK_FORM_URL + "/static/images/closeBtn.png";
 		exitBtn.style.width = 20 + "px";
 		exitBtn.style.height = 20 + "px";
 		exitBtn.style.position = "absolute";
