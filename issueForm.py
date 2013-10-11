@@ -6,8 +6,9 @@ import time
 from datetime import datetime
 import psycopg2
 import json
+from provplan_email_lib import *
 
-@app.route("/") # listens at this url 
+@app.route("/") # listens at this url
 def get_template():
 	topic_options = app.config['TOPICS']
 	return render_template('base.html', referer=request.args.get('s'), topics = topic_options)
@@ -36,11 +37,12 @@ def process_form():
 		email = 'Not provided'
 
 	try:
-		add_record(url, issue_type, username, email, content, follow_up)
+    	#add_record(url, issue_type, username, email, content, follow_up)
+		send_mail(url, issue_type, username, email, content, follow_up)
 		return json.dumps({'status':'success'})
 
 	except Exception as e:
-
+		print e
 		return json.dumps({'status':'error'})
 
 def add_record(url, issue_type, name, email, content, follow_up):
@@ -66,12 +68,32 @@ def add_record(url, issue_type, name, email, content, follow_up):
 
 	return True
 
+def send_mail(url, issue_type, username, email, content, follow_up):
+    smtp_server = app.config['SMTP_SERVER']
+    smtp_port = app.config['SMTP_PORT']
+    smtp_user = app.config['SMTP_USER']
+    smtp_password = app.config['SMTP_PASS']
+    addresses = app.config['ADDRESSES']
+    from_addr = app.config['FROM_ADDRESS']
+    message = """
+        Submitted from: {0}\n
+        Issue Type: {1}\n
+        Username(optional): {2}\n
+        Email(optional):{3}\n
+        Content: {4}\n
+        Follow up: {5}
+    """.format(url, issue_type, username, email, content, follow_up)
+
+    e = Emailer(None, smtp_server, smtp_port, smtp_user, smtp_password)
+    e.send_email(to_addresses=addresses, subject="Feedback Form", body=message, from_address=from_addr)
+    e.disconnect()
+
 
 
 if __name__ == "__main__":
     app.run(debug=app.config['DEBUG'], host="0.0.0.0")
 
-   
+
 
 
 
