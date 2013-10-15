@@ -66,8 +66,6 @@ def add_record(url, issue_type, name, email, content, follow_up):
 
 	return True
 
-
-
 if __name__ == "__main__":
     app.run(debug=app.config['DEBUG'], host="0.0.0.0")
 

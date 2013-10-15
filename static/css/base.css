@@ -367,22 +367,34 @@ input:focus {
 	border: 2px solid #e3e3e3;
 }
 
-#confirm-box{
+#message-box{
 	display: none;
 	font-size: 13.5px;
 	margin-top: 90px;
 	line-height: 10px;
 }
 
-#confirm-box p{
+#message-box h1{
+	margin: 0 0 30px 0;
+}
+
+#message-box p{
 	line-height: 20px;
 }
 
-#confirm-img{
+#success-message{
+	display: none;
+}
+
+#error-message{
+	display: none;
+}
+
+#tpp-img{
 	float: right;
 	margin: 50px 70px 0 0;
 }
-#confirm-img img{
+#tpp-img img{
 	margin: 0 0 0 35px;
 }
 

@@ -54,21 +54,34 @@
 			</form>
 		</div>
 
-		<div id="confirm-box">
-			<h1>Thank You!</h1>
-			<p>
-				<p>We have recieved your submission.
+		<div id="message-box">
+			<div id="success-message">
+				<h1>Thank You!</h1>
+				<p>
+					<p>We have recieved your submission.
+					</p>
+					<p>We appreciate your feedback. If you would like any further information feel free to email us at: <a href= "mailto:info@provplan.org" >info@provplan.org</a></p>
 				</p>
-				<p>We appreciate your feedback. If you would like any further information feel free to email us at: <a href= "mailto:info@provplan.org" >info@provplan.org</a></p>
-			</p>
-
-			<div id="confirm-img">
+			</div>
+			<div id="error-message">
+				<h1>Oh no, an error!</h1>
+				<p>
+					<p id="status-message">
+						<!--message displayed by base.js-->
+					</p> 	
+					<p>
+						Please try your submission at a later time. If you continue to recieve this message, feel free to email us at: <a href= "mailto:info@provplan.org" >info@provplan.org</a>
+					</p>
+				</p>
+			</div>
+			<div id="tpp-img">
 				<a href="#">
 					<img src="{{url_for('static', filename='images/pphand.png')}}" alt="Prov Plan" width="150" height="30" >
 				</a>
 			</div>
 
-		</div>
+		</div><!--End message-box-->
+
 	</div><!--End container-->
 
 	<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>

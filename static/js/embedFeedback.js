@@ -1,5 +1,5 @@
 
-/*------------------ DOC READY --------------*/
+/*------------------ DOC READY ---------------------------------------------------*/
 /*
 	jQuery's document.ready/$(function(){}) should
 	you wish to use a cross-browser DOMReady solution
@@ -115,7 +115,11 @@
 	window.$d = $d;
 
 })( window );
+/*------End doc.ready definitions------------------------------------------------------*/
 
+
+
+/*------Begin Embedding Feedback-------------------------------------------------------*/
 $d(function(){
 	var feedback_btn = document.getElementById("site-feedback");
 	feedback_btn.onclick = function(){
@@ -217,3 +221,5 @@ $d(function(){
 		exitBtn.style.left = (wW/2)+(fw/2) - 15 + "px";	
 	}
 });//end doc.ready
+
+/*------End Embedding Feedback----------------------------------------------------------*/
