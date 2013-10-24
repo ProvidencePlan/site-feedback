@@ -250,7 +250,7 @@ input:focus {
 
 #container{
 	width: 600px;
-	height: 342px;
+	height: 490px;
 	padding: 30px;
 	font-size: 11px;
 	background-color: #fff;
@@ -365,6 +365,10 @@ input:focus {
 
 .inp-lite{
 	border: 2px solid #e3e3e3;
+}
+
+#terms-and-cond{
+	color: #6A6970;
 }
 
 #message-box{

@@ -1,5 +1,6 @@
 
-/*------------form effects---------------*/
+
+/*----------click Events----------------*/
 $('#submit-btn').mouseover(function(){
 	$(this).addClass('btn-lite');
 })
@@ -19,11 +20,34 @@ $("#name-inp, #email-inp, #content-inp").mouseout(function(){
 $("#tpp-img").click(function(){
 	window.open("http://provplan.org/index.php/");
 })
-/*----------------------------------------*/
+/*---------------------------------------*/
 
 
 
-/*-----form submission requirements-------*/
+/*-----When new topic is selected--------*/
+
+$('#issue').change(function(){
+	var selectedVal = $('#issue').val();
+	var contentBox = $("#content-inp");
+
+	if(selectedVal == "opt1"){
+		contentBox.attr("placeholder", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt")
+	}
+	else if(selectedVal == "opt2"){
+		contentBox.attr("placeholder", "consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt")
+	}
+	else if(selectedVal == "opt3"){
+		contentBox.attr("placeholder", "dipisicing elit, sed do eiusmodlit, sed do eiusmod tempor incididunt")
+	}
+	else if(selectedVal == "opt4"){
+		contentBox.attr("placeholder", "sed do eiusmod tempor incididunt dipisicing elit, sed do eiusmodlit, sed do eiusmod tempor incididunt")
+	}
+})
+/*---------------------------------------*/
+
+
+
+/*-----form submission/validations-------*/
 $("#issue-form").submit(function(e){
 	e.preventDefault();
 
@@ -31,8 +55,9 @@ $("#issue-form").submit(function(e){
 	var content = $.trim($('#content-inp').val());
 	var followup_input = $('#followup-input');
 	var email_input = $.trim($('#email-inp').val());
-	
+	var currentUrl = document.URL;
 
+	checkURL(currentUrl);
 
 	if(iss_select.val() == "select-one"){
 		displaySelectError();
@@ -179,4 +204,12 @@ function displayStatusToUser(status){
 	}
 }
 
+function checkURL(url){
+	var urlRegex = /127\d+/;
+
+	if(urlRegex.test(url)){
+		console.log("good");
+
+	}
+}
 /*-----End Utility Functions--------------------------------*/
