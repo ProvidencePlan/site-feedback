@@ -20,13 +20,20 @@ def process_form():
 	email = str(request.form.get("user-email"))
 	content = str(request.form.get("issue-content"))
 	follow_up_response = request.form.get("follow-up")
+	send_copy_response = request.form.get("send-copy")
 
 	follow_up = False
+	send_copy = False
 
 	if follow_up_response == 'none':
 		follow_up = False
 	elif follow_up_response == 'on':
 		follow_up = True
+
+	if send_copy_response == 'none':
+		send_copy = False
+	elif send_copy_response == 'on':
+		send_copy = True
 
 
 	if username.strip() == '':
@@ -36,14 +43,14 @@ def process_form():
 		email = 'Not provided'
 
 	try:
-		add_record(url, issue_type, username, email, content, follow_up)
+		add_record(url, issue_type, username, email, content, follow_up, send_copy)
 		return json.dumps({'status':'success'})
 
 	except Exception as e:
 
 		return json.dumps({'status':'error'})
 
-def add_record(url, issue_type, name, email, content, follow_up):
+def add_record(url, issue_type, name, email, content, follow_up, send_copy):
 
 	#make connection to database
 	connection = psycopg2.connect(app.config['DB_CONNECT_STR'])
@@ -52,9 +59,9 @@ def add_record(url, issue_type, name, email, content, follow_up):
 	cursor = connection.cursor()
 
 	#store values in db
-	info = (str(url), str(issue_type), str(name), str(email), str(content), follow_up)
+	info = (str(url), str(issue_type), str(name), str(email), str(content), follow_up, send_copy)
 
-	query = "INSERT INTO issue (url, issue_type, user_name, user_email, content, follow_up) VALUES (%s, %s, %s, %s, %s, %s)"
+	query = "INSERT INTO issue (url, issue_type, user_name, user_email, content, follow_up, send_copy) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 	cursor.execute(query, info)
 
 	#solidify changes to the db

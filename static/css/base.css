@@ -260,8 +260,17 @@ input:focus {
 
 #container h1{
 	color: #6A6970;
-	margin: 0 0 20px 0;
+	line-height: 23px;
+	margin: 0 0 30px 0;
 	font-size: 17px;
+}
+
+#profiles-header{
+	display: none;
+}
+
+#datahub-header{
+	display: none;
 }
 
 #intro{
@@ -331,6 +340,12 @@ input:focus {
  	color: red;
 
 }
+
+.ckbox-inp{
+	width: 16px;
+	height: 15px;
+}
+
 #follow-up{
 	height: 30px;
 	margin: 65px 0 0 33px;
@@ -343,10 +358,20 @@ input:focus {
 	margin-right: 5px;
 }
 
-#follow-up input{
-	width: 16px;
-	height: 15px; 
+#follow-up .ckbox-inp{
 	margin-top: 6px;
+}
+
+#send-copy{
+	height: 30px;
+}
+
+#send-copy label{
+	width: 434px;
+}
+
+#send-copy .ckbox-inp{
+	margin-top: 0px;
 }
 
 #submit-box{
@@ -387,6 +412,14 @@ input:focus {
 }
 
 #success-message{
+	display: none;
+}
+
+#profiles-email{
+	display: none;
+}
+
+#datahub-email{
 	display: none;
 }
 

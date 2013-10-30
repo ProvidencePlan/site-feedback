@@ -11,8 +11,19 @@
 
 		<div id="form-cont">
 
-			<h1>Give us Feedback</h1>
-			<div id="intro">Use this form to submit general inquiries, report bugs, or request additional assistance</div>
+			<div id="profiles-header">
+				<h1>Thank you for using Community Profiles. 
+				We welcome all feedback</h1>		
+			</div>
+
+			<div id="datahub-header">
+				<h1>Thank you for using RI DataHub. We welcome all feedback</h1>
+			</div>
+
+
+			<div id="intro">
+				Use this form to submit general inquiries, report bugs, or request additional assistance
+			</div>
 
 			<form action="/submit" method="post" name="issue-form" id="issue-form">
 				<div class="form-field" id="drop-down">
@@ -43,8 +54,13 @@
 				</div>
 
 				<div class="form-field" id="follow-up">
-					<input id="followup-input" type="checkbox" name="follow-up"/>
+					<input id="followup-input" class="ckbox-inp" type="checkbox" name="follow-up"/>
 					<label>Would you like a follow up response?</label>
+				</div>
+
+				<div class="form-field" id="send-copy">
+					<input id="sendcopy-input" class="ckbox-inp" type="checkbox" name="send-copy"/>
+					<label>Would you like to receive a copy of your message sent to your email?</label>
 				</div>
 
 				<div class="form-field" id="submit-box">
@@ -68,7 +84,10 @@
 				<p>
 					<p>We have recieved your submission.
 					</p>
-					<p>We appreciate your feedback. If you would like any further information feel free to email us at: <a href= "mailto:info@provplan.org" >info@provplan.org</a></p>
+					<p>We appreciate your feedback. You can expect a response to your inquiry within 2-3 business days. If you need additional assistance please email us at:
+						<a id="profiles-email" href="mailto:profiles@provplan.org">profiles@provplan.org</a> 
+						<a id="datahub-email" href="questions@ridatahub.org">questions@ridatahub.org</a>
+					</p>
 				</p>
 			</div>
 			<div id="error-message">
@@ -78,7 +97,8 @@
 						<!--message displayed by base.js-->
 					</p> 	
 					<p>
-						Please try your submission at a later time. If you continue to recieve this message, feel free to email us at: <a href= "mailto:info@provplan.org" >info@provplan.org</a>
+						Please try your submission at a later time. If you continue to recieve this message, feel free to email us at: <a id="profiles-email" href="mailto:profiles@provplan.org">profiles@provplan.org</a> 
+						<a id="datahub-email" href="questions@ridatahub.org">questions@ridatahub.org</a>
 					</p>
 				</p>
 			</div>

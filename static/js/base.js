@@ -1,3 +1,27 @@
+$(function() {
+    
+	var indexOfProfiles = window.location.search.indexOf("profiles");
+	var indexOfDatahub = window.location.search.indexOf("ridatahub");
+
+	var profilesHeader = $('#profiles-header');
+	var datahubHeader = $('#datahub-header');
+
+	var profilesEmail = $('#profiles-email');
+	var datahubEmail = $('#datahub-email');
+
+	if(indexOfProfiles != -1){
+		//add profiles specs
+		profilesHeader.show();
+		profilesEmail.show();
+	}
+	else if(indexOfDatahub != -1){
+		//add data hub specs.
+		datahubHeader.show();
+		datahubEmail.show();
+	}
+
+
+});
 
 
 /*----------click Events----------------*/
@@ -51,50 +75,50 @@ $('#issue').change(function(){
 $("#issue-form").submit(function(e){
 	e.preventDefault();
 
-	var iss_select = $('#issue');
 	var content = $.trim($('#content-inp').val());
-	var followup_input = $('#followup-input');
 	var email_input = $.trim($('#email-inp').val());
-	var currentUrl = document.URL;
-
-	checkURL(currentUrl);
+	var followup_input = $('#followup-input');
+	var sendcopy_input = $('#sendcopy-input');
+	var iss_select = $('#issue');
 
 	if(iss_select.val() == "select-one"){
 		displaySelectError();
 
 	}else{// continue processing form...
 
-		// check for content 
-		if(content.length > 0){
-			//check that email is valid
-			if(validateEmail(email_input) == true || email_input == ""){
+			 
+		/*a*/if(content.length > 0){
+				// check for content
+				
+			/*b*/if(validateEmail(email_input) == true || email_input == ""){
+					//check that email is valid
+					
+				/*c*/if(followup_input.is(':checked')  || sendcopy_input.is(":checked")){
+						//check that followup is selected
+						
+					/*d*/if(email_input.length > 0){
+							//check that the email is entered
+							
+						/*e*/if(validateEmail(email_input) == true){
+								//make sure email is valid again
+								sendForm(this);
 
-				//check that followup is selected
-				if(followup_input.is(':checked')){
-
-					//check that the email is entered
-					if(email_input.length > 0){
-
-						//make sure email is valid
-						if(validateEmail(email_input) == true){
-							sendForm(this);
-
-						}else{
-							displayInvalidEmailError();
+						}/*e*/else{
+								displayInvalidEmailError();
 						}
 
-					}else{
-						displayInvalidEmailError();
+					}/*d*/else{
+							displayInvalidEmailError();
 					}
 
-				}else{
-					sendForm(this);
+				}/*c*/else{
+						sendForm(this);
 				}
-			}else{
-				displayInvalidEmailError();
+			}/*b*/else{
+					displayInvalidEmailError();
 			}
-		}else{
-			displayContentError();
+		}/*a*/else{
+				displayContentError();
 		}
 	}
 
@@ -138,7 +162,6 @@ function displayContentError(){
 		content_err.hide();
 	})
 }
-
 
 function sendForm(form){
 	$.ajax({
@@ -204,12 +227,5 @@ function displayStatusToUser(status){
 	}
 }
 
-function checkURL(url){
-	var urlRegex = /127\d+/;
 
-	if(urlRegex.test(url)){
-		console.log("good");
-
-	}
-}
 /*-----End Utility Functions--------------------------------*/

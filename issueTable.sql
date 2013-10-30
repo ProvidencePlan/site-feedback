@@ -9,5 +9,6 @@ CREATE TABLE issue (
 	user_email 		varchar(40),
 	content			text,
 	follow_up		boolean,
+	send_copy		boolean, 
 	issue_addressed boolean
 );
