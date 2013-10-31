@@ -1,3 +1,4 @@
+/*--------Changes header and email links depending on url---------*/
 $(function() {
     
 	var indexOfProfiles = window.location.search.indexOf("profiles");
@@ -6,25 +7,28 @@ $(function() {
 	var profilesHeader = $('#profiles-header');
 	var datahubHeader = $('#datahub-header');
 
-	var profilesEmail = $('#profiles-email');
-	var datahubEmail = $('#datahub-email');
+	var profilesEmail = $('.profiles-email');
+	var datahubEmail = $('.datahub-email');
+
+	var profilesLogo = $('#tpp-logo');
+	var datahubLogo = $('#dataHub-logo');
 
 	if(indexOfProfiles != -1){
 		//add profiles specs
 		profilesHeader.show();
-		profilesEmail.show();
+		profilesEmail.css("display", "block");
+		profilesLogo.show();
 	}
 	else if(indexOfDatahub != -1){
 		//add data hub specs.
 		datahubHeader.show();
-		datahubEmail.show();
+		datahubEmail.css("display", "block");
+		datahubLogo.show();
 	}
-
-
 });
 
 
-/*----------click Events----------------*/
+/*----------click Events------------------------------------------*/
 $('#submit-btn').mouseover(function(){
 	$(this).addClass('btn-lite');
 })
@@ -44,34 +48,50 @@ $("#name-inp, #email-inp, #content-inp").mouseout(function(){
 $("#tpp-img").click(function(){
 	window.open("http://provplan.org/index.php/");
 })
-/*---------------------------------------*/
+
+$("#dataHub-img").click(function(){
+	window.open("http://ridatahub.org/");
+})
+/*---------------------------------------------------------------*/
 
 
 
-/*-----When new topic is selected--------*/
+/*-----When new topic is selected--------------------------------*/
 
 $('#issue').change(function(){
 	var selectedVal = $('#issue').val();
 	var contentBox = $("#content-inp");
 
 	if(selectedVal == "opt1"){
-		contentBox.attr("placeholder", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt")
+		contentBox.attr("placeholder", "Please be as clear and precise as possible about the bug you encountered. Helpful information includes: Brief summary of the problem, steps needed to reproduce the problem, what you expected to happen, what happened instead, etc. ");
 	}
 	else if(selectedVal == "opt2"){
-		contentBox.attr("placeholder", "consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt")
+		contentBox.attr("placeholder", "Your feedback helps us make a better product. Please be as clear and precise as possible about the feature/enhancement you would like to see added. Helpful information includes: Brief summary of feature, how would you like the feature to work, why the feature is important to your work, etc.");
 	}
 	else if(selectedVal == "opt3"){
-		contentBox.attr("placeholder", "dipisicing elit, sed do eiusmodlit, sed do eiusmod tempor incididunt")
+		contentBox.attr("placeholder", "Please provide a summary of the data you would like to see added to the website. Helpful information includes: Source for the original data.");
 	}
 	else if(selectedVal == "opt4"){
-		contentBox.attr("placeholder", "sed do eiusmod tempor incididunt dipisicing elit, sed do eiusmodlit, sed do eiusmod tempor incididunt")
+		contentBox.attr("placeholder", "Please describe the inaccuracy you encountered. Helpful information includes: Which piece of information on the webpage was inaccurate, why you believe the information to be inaccurate, etc.");
+	}
+	else if(selectedVal == "opt5"){
+		contentBox.attr("placeholder", "Please provide a clear and precise summary of the technical support you would like to receive.");
+	}
+	else if(selectedVal == "opt6"){
+		contentBox.attr("placeholder", "Please describe the issue you are encountering with a login or password. DO NOT include private information in this request and NEVER include your password.");
+	}
+	else if(selectedVal == "opt7"){
+		contentBox.attr("placeholder", "If you have a general question or comment please describe that here.");
+	}
+	else if(selectedVal == "opt8"){
+		contentBox.attr("placeholder", "If your feedback or concern does not fit into one of the existing topics please provide your comment here.");
 	}
 })
-/*---------------------------------------*/
+/*---------------------------------------------------------------*/
 
 
 
-/*-----form submission/validations-------*/
+/*-----form submission/validations-------------------------------*/
 $("#issue-form").submit(function(e){
 	e.preventDefault();
 
@@ -123,10 +143,10 @@ $("#issue-form").submit(function(e){
 	}
 
 });
-/*----------------------------------------*/
+/*---------------------------------------------------------------*/
 
 
-/*---------Utility Functions--------------*/
+/*---------Utility Functions-------------------------------------*/
 function validateEmail(email){
 	var emailFilter = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -200,10 +220,12 @@ function displayStatusToUser(status){
 	var errorMess = $("#error-message"); 
 	var statusMess = $("#status-message");
 	var formContainer = $('#form-cont');
+	var terms = $("#terms-and-cond");
 
 	var errText = "We apologize for the inconvienvce.";
 
-	formContainer.children().remove();
+	formContainer.remove();
+	terms.remove();
 	messageBox.show();
 
 	if(status == "success"){

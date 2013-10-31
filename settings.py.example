@@ -14,3 +14,11 @@ TOPICS = (
 
 DB_CONNECT_STR = "dbname='{0}' user='{1}' host='{2}' password='{3}'".format(DB_NAME, DB_USER, DB_HOST, DB_PASSWORD)
 
+SMTP_SERVER = 'mailserver@mail.org'
+SMTP_PORT = '25'
+SMTP_USER = ''
+SMTP_PASS = ''
+ADDRESSES = ''
+FROM_ADDRESS = ''
+
+
