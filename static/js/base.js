@@ -66,19 +66,19 @@ $('#issue').change(function(){
 		contentBox.attr("placeholder", "Please be as clear and precise as possible about the bug you encountered. Helpful information includes: Brief summary of the problem, steps needed to reproduce the problem, what you expected to happen, what happened instead, etc. ");
 	}
 	else if(selectedVal == "opt2"){
-		contentBox.attr("placeholder", "Your feedback helps us make a better product. Please be as clear and precise as possible about the feature/enhancement you would like to see added. Helpful information includes: Brief summary of feature, how would you like the feature to work, why the feature is important to your work, etc.");
-	}
-	else if(selectedVal == "opt3"){
 		contentBox.attr("placeholder", "Please provide a summary of the data you would like to see added to the website. Helpful information includes: Source for the original data.");
 	}
-	else if(selectedVal == "opt4"){
+	else if(selectedVal == "opt3"){
 		contentBox.attr("placeholder", "Please describe the inaccuracy you encountered. Helpful information includes: Which piece of information on the webpage was inaccurate, why you believe the information to be inaccurate, etc.");
 	}
+	else if(selectedVal == "opt4"){
+		contentBox.attr("placeholder", "Your feedback helps us make a better product. Please be as clear and precise as possible about the feature/enhancement you would like to see added. Helpful information includes: Brief summary of feature, how would you like the feature to work, why the feature is important to your work, etc.");
+	}
 	else if(selectedVal == "opt5"){
-		contentBox.attr("placeholder", "Please provide a clear and precise summary of the technical support you would like to receive.");
+		contentBox.attr("placeholder", "Please describe the issue you are encountering with a login or password. DO NOT include private information in this request and NEVER include your password.");
 	}
 	else if(selectedVal == "opt6"){
-		contentBox.attr("placeholder", "Please describe the issue you are encountering with a login or password. DO NOT include private information in this request and NEVER include your password.");
+		contentBox.attr("placeholder", "Please provide a clear and precise summary of the technical support you would like to receive.");
 	}
 	else if(selectedVal == "opt7"){
 		contentBox.attr("placeholder", "If you have a general question or comment please describe that here.");

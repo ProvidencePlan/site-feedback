@@ -144,8 +144,8 @@ $d(function(){
 	/*-----Insert Iframe --------------------------*/
 		var frame = document.createElement('iframe');
 		frame.id = "feedback-frame";
-		var fw = 662;
-		var fh = 404;
+		var fw = 590;
+		var fh = 473;
 		frame.src = FEEDBACK_FORM_URL;
 		frame.src += "?s=" + encodeURIComponent(window.location);
 		frame.style.width = fw + "px";
