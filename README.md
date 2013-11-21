@@ -1,6 +1,6 @@
 site-feedback
 =============
-Embed a feedback form into a webapp.
+Embed a basic feedback form into a webapp.
 
 
 Usage:
@@ -14,7 +14,7 @@ Requires Flask, postgres... See requirements.txt
 EX:
 
 ```
-	<script>FEEDBACK_FORM_URL="http://10.1.1.155:5000"</script>
+	<script>FEEDBACK_FORM_URL="http://127.1.1.0:5000"</script>
  	<script src="embedFeedback.js"></script>
 ```
 
@@ -26,9 +26,9 @@ EX:
 
 ```
 	TOPICS = (
-		("value submited to DB", "topic user will select"),
+		("reference value for base.html", "option value in select tag"),
 		("...","..."),
 	)
 ```
-...see ```settings.py.example```. Make sure to remove ```.example``` from file name when deploying.
+...see ```settings.py.example```. Make sure to remove ```.example``` from file name for production.
 
