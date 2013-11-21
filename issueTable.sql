@@ -10,5 +10,6 @@ CREATE TABLE issue (
 	content			text,
 	follow_up		boolean,
 	send_copy		boolean, 
+	user_agent		text,
 	issue_addressed boolean
 );

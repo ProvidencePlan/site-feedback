@@ -3,4 +3,6 @@ ENV/
 embedTest.html
 settings.py
 feedbackChanges.txt
+jquery.min.js
+
 

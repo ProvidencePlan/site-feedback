@@ -101,6 +101,9 @@ $("#issue-form").submit(function(e){
 	var sendcopy_input = $('#sendcopy-input');
 	var iss_select = $('#issue');
 
+	// set user agent info to be sent in POST request
+	$("#user-agent-input").val(navigator.userAgent);
+
 	if(iss_select.val() == "select-one"){
 		displaySelectError();
 
