@@ -27,18 +27,18 @@ def process_form():
 	follow_up_response = request.form.get("follow-up")
 	send_copy_response = request.form.get("send-copy")
 
-	follow_up = False
-	send_copy = False
+	follow_up = 'no'
+	send_copy = 'no'
 
 	if follow_up_response == 'none':
-		follow_up = False
+		follow_up = 'no'
 	elif follow_up_response == 'on':
-		follow_up = True
+		follow_up = 'yes'
 
 	if send_copy_response == 'none':
-		send_copy = False
+		send_copy = 'no'
 	elif send_copy_response == 'on':
-		send_copy = True
+		send_copy = 'yes'
 
 
 	if username.strip() == '':
@@ -63,16 +63,15 @@ def add_record(url, issue_type, name, email, content, follow_up, send_copy, user
 	#make connection to database
 	connection = psycopg2.connect(app.config['DB_CONNECT_STR'])
 
-	#create cursor (allows interaction with db)
+	#create cursor (controls interaction with db)
 	cursor = connection.cursor()
 
 	#store values in db
 	info = (str(url), str(issue_type), str(name), str(email), str(content), follow_up, send_copy, str(user_agent))
-
 	query = "INSERT INTO issue (url, issue_type, user_name, user_email, content, follow_up, send_copy, user_agent) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
 	cursor.execute(query, info)
 
-	#solidify changes to the db
+	#commit changes to the db
 	connection.commit()
 
 	#Always close communication with db
@@ -86,20 +85,28 @@ def send_mail(url, issue_type, username, email, content, follow_up, user_agent):
     smtp_port = app.config['SMTP_PORT']
     smtp_user = app.config['SMTP_USER']
     smtp_password = app.config['SMTP_PASS']
-    addresses = app.config['ADDRESSES']
+
+    if url == 'profiles':
+        addresses = app.config['PROFILES_ADDRESS']
+    elif url == 'ridatahub':
+        addresses = app.config['RIDATAHUB_ADDRESS']
+
     from_addr = app.config['FROM_ADDRESS']
     message = """
-        Submitted from: {0}\n
-        Issue Type: {1}\n
-        Username(optional): {2}\n
-        Email(optional):{3}\n
-        Content: {4}\n
-        Follow up: {5}\n
-        UserAgent: {6}
+    Submitted from: {0}\n
+    Issue Topic: {1}\n
+    Username(optional): {2}\n
+    Email(optional): {3}\n
+    Content: {4}\n
+    Follow up: {5}\n
+    UserAgent: {6}
     """.format(url, issue_type, username, email, content, follow_up, user_agent)
+
+    devops_address = app.config['DEVOPS_ADDRESS']
 
     e = Emailer(None, smtp_server, smtp_port, smtp_user, smtp_password)
     e.send_email(to_addresses=addresses, subject="Feedback Form", body=message, from_address=from_addr)
+    e.send_email(to_addresses=devops_address, subject="Feedback Form", body=message, from_address=from_addr)
     e.disconnect()
 
 if __name__ == "__main__":
