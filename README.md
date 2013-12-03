@@ -14,7 +14,7 @@ Requires Flask, postgres... See requirements.txt
 EX:
 
 ```
-	<script>FEEDBACK_FORM_URL="http://127.1.1.0:5000"</script>
+	<script>FEEDBACK_FORM_URL="http://127.0.0.1:5000"</script>
  	<script src="embedFeedback.js"></script>
 ```
 
@@ -30,5 +30,7 @@ EX:
 		("...","..."),
 	)
 ```
+7. set SMTP settings for emails notifications to be mailed to your choice.
+
 ...see ```settings.py.example```. Make sure to remove ```.example``` from file name for production.
 

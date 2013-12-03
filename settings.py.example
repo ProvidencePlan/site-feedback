@@ -22,7 +22,11 @@ SMTP_SERVER = 'mailserver@mail.org'
 SMTP_PORT = '25'
 SMTP_USER = ''
 SMTP_PASS = ''
-ADDRESSES = ''
+
+PROFILES_ADDRESS = ''
+RIDATAHUB_ADDRESS = ''
+DEVOPS_ADDRESS = ''
+
 FROM_ADDRESS = ''
 
 
