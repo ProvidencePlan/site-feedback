@@ -7,8 +7,8 @@ Usage:
 =============
 Requires Flask, postgres... See requirements.txt
 
-1. Deploy Flask application.
-2. Run the included schema file ``` issueTable.sql ```
+1. Deploy Flask application. Follow issueFormExample.py instead of issueForm.py. If you have multiple recipients, follow the issueForm.py model. 
+2. Run the included schema file ``` issueTable.sql ``` 
 3. Add ```embedFeedback.js``` to site and create ```FEEDBACK_FORM_URL``` var in your page with the url to the deployed Feedback app.
 
 EX:
@@ -30,7 +30,7 @@ EX:
 		("...","..."),
 	)
 ```
-7. set SMTP settings for emails notifications to be mailed to your choice.
+7. set SMTP settings for emails notifications to be mailed to your choice. To change 
 
 ...see ```settings.py.example```. Make sure to remove ```.example``` from file name for production.
 

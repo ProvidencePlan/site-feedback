@@ -31,5 +31,6 @@ PROFILES_ADDRESS = ''
 RIDATAHUB_ADDRESS = ''
 DEVOPS_ADDRESS = ''
 
-
-
+'''If you have multiple recipients, list them as above'''
+OTHER_ADDRESS = ''
+...
