@@ -22,11 +22,14 @@ SMTP_SERVER = 'mailserver@mail.org'
 SMTP_PORT = '25'
 SMTP_USER = ''
 SMTP_PASS = ''
+ADDRESSES = ''
+FROM_ADDRESS = ''
 
+
+'''specific to RIDataHub'''
 PROFILES_ADDRESS = ''
 RIDATAHUB_ADDRESS = ''
 DEVOPS_ADDRESS = ''
 
-FROM_ADDRESS = ''
 
 
