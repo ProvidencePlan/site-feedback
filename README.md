@@ -30,7 +30,7 @@ EX:
 		("...","..."),
 	)
 ```
-7. set SMTP settings for emails notifications to be mailed to your choice. To change 
+7. Set SMTP settings for email notifications to be sent to your email address. 
 
 ...see ```settings.py.example```. Make sure to remove ```.example``` from file name for production.
 
