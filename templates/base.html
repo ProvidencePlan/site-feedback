@@ -30,8 +30,8 @@
 					<label>Topic list:</label>
 					<select id= "issue" name="issue-option">
 						<option id="first-op" value="select-one">Please Select a topic</option>
-						{% for t in topics %}
-							<option value='{{t.1}}'>{{t.1}}</option>
+						{% for key, value in topics.iteritems() %}
+							<option value='{{key}}'>{{value}}</option>
 						{% endfor %}
 					</select> <span id="issue-error">*Please select an issue</span>
 					</div>
@@ -101,8 +101,9 @@
 						<!--message displayed by base.js-->
 					</p> 	
 					<p>
-						Please try your submission at a later time. If you continue to recieve this message, feel free to email us at: <a class="profiles-email" href="mailto:profiles@provplan.org">profiles@provplan.org</a> 
-						<a class="datahub-email" href="questions@ridatahub.org">questions@ridatahub.org</a>
+						Please try your submission at a later time. If you continue to recieve this message, feel free to email us at: 
+						<a class="profiles-email" href="mailto:profiles@provplan.org">profiles@provplan.org</a> 
+						<a class="datahub-email" href="mailto:questions@ridatahub.org">questions@ridatahub.org</a>
 					</p>
 				</p>
 			</div>

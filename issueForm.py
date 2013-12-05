@@ -7,11 +7,19 @@ from datetime import datetime
 import psycopg2
 import json
 from provplan_email_lib import *
+from collections import OrderedDict
 
 @app.route("/") # listens at this url
 def get_template():
-	topic_options = app.config['TOPICS']
-	return render_template('base.html', referer=request.args.get('s'), topics = topic_options)
+	topics = app.config['TOPICS']
+
+	topic_key_list = topics.keys()
+	topic_key_list.sort()
+	sorted_topics = OrderedDict()
+	for key in topic_key_list:
+		sorted_topics[key] = topics[key]
+
+	return render_template('base.html', referer=request.args.get('s'), topics = sorted_topics)
 
 @app.route("/submit", methods=["POST"])#request handler
 def process_form():
@@ -47,10 +55,13 @@ def process_form():
 	if email.strip() == '':
 		email = 'Not provided'
 
+	topics_dict = app.config['TOPICS']
+	issue = topics_dict.get(issue_type)
+
 	try:
 
-		add_record(url, issue_type, username, email, content, follow_up, send_copy, user_agent)
-		send_mail(url, issue_type, username, email, content, follow_up, user_agent)
+		add_record(url, issue, username, email, content, follow_up, send_copy, user_agent)
+		send_mail(url, issue, username, email, content, follow_up, user_agent)
 
 		return json.dumps({'status':'success'})
 
@@ -58,7 +69,7 @@ def process_form():
 		print e
 		return json.dumps({'status':'error'})
 
-def add_record(url, issue_type, name, email, content, follow_up, send_copy, user_agent):
+def add_record(url, issue, name, email, content, follow_up, send_copy, user_agent):
 
 	#make connection to database
 	connection = psycopg2.connect(app.config['DB_CONNECT_STR'])
@@ -67,7 +78,7 @@ def add_record(url, issue_type, name, email, content, follow_up, send_copy, user
 	cursor = connection.cursor()
 
 	#store values in db
-	info = (str(url), str(issue_type), str(name), str(email), str(content), follow_up, send_copy, str(user_agent))
+	info = (str(url), str(issue), str(name), str(email), str(content), follow_up, send_copy, str(user_agent))
 	query = "INSERT INTO issue (url, issue_type, user_name, user_email, content, follow_up, send_copy, user_agent) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
 	cursor.execute(query, info)
 
@@ -80,15 +91,15 @@ def add_record(url, issue_type, name, email, content, follow_up, send_copy, user
 
 	return True
 
-def send_mail(url, issue_type, username, email, content, follow_up, user_agent):
+def send_mail(url, issue, username, email, content, follow_up, user_agent):
     smtp_server = app.config['SMTP_SERVER']
     smtp_port = app.config['SMTP_PORT']
     smtp_user = app.config['SMTP_USER']
     smtp_password = app.config['SMTP_PASS']
 
-    if url == 'profiles':
+    if 'profiles' in url:
         addresses = app.config['PROFILES_ADDRESS']
-    elif url == 'ridatahub':
+    elif 'ridatahub' in url:
         addresses = app.config['RIDATAHUB_ADDRESS']
 
     from_addr = app.config['FROM_ADDRESS']
@@ -100,7 +111,7 @@ def send_mail(url, issue_type, username, email, content, follow_up, user_agent):
     Content: {4}\n
     Follow up: {5}\n
     UserAgent: {6}
-    """.format(url, issue_type, username, email, content, follow_up, user_agent)
+    """.format(url, issue, username, email, content, follow_up, user_agent)
 
     devops_address = app.config['DEVOPS_ADDRESS']
 

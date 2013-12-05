@@ -99,17 +99,16 @@ $("#issue-form").submit(function(e){
 	var email_input = $.trim($('#email-inp').val());
 	var followup_input = $('#followup-input');
 	var sendcopy_input = $('#sendcopy-input');
-	var iss_select = $('#issue');
+	var selected_issue = $('#issue');
 
 	// set user agent info to be sent in POST request
 	$("#user-agent-input").val(navigator.userAgent);
 
-	if(iss_select.val() == "select-one"){
+	if(selected_issue.val() == "select-one"){
 		displaySelectError();
 
 	}else{// continue processing form...
-
-			 
+		 
 		/*a*/if(content.length > 0){
 				// check for content
 				
