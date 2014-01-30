@@ -4,7 +4,6 @@
 	<title>Form</title>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/base.css')}}">
 
-
 </head>
 <body>
 	<div id="container">
@@ -21,8 +20,7 @@
 
 
 			<div id="intro">
-				Use this form to submit bug reports, usability issues and feature suggestions directly to the 
-				development team. We appreciate you taking the time to let us know.
+				Use this form to submit bug reports, usability issues and feature suggestions directly to the development team. We appreciate you taking the time to let us know.
 			</div>
 
 			<form action="/submit" method="post" name="issue-form" id="issue-form">
@@ -123,7 +121,7 @@
 
 	</div><!--End container-->
 
-	<script src="{{url_for('static', filename='js/jquery-1.10.2.js')}}"></script>
+	<script src="{{url_for('static', filename='js/jquery-2.1.0.min.js')}}"></script>
 	<script src="{{url_for('static', filename='js/base.js')}}"></script>
 </body>
 </html>
