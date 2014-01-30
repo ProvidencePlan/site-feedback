@@ -7,14 +7,16 @@ Usage:
 =============
 Requires Flask, postgres... See requirements.txt
 
-1. Deploy Flask application. Follow issueFormExample.py instead of issueForm.py. If you have multiple recipients, follow the issueForm.py model. 
+1. Deploy Flask application. 
+2. If application is used outside of ProvPlan, disregard other recipients section in settings.
+3. If application is used outside of ProvPlan, include your own email library. ...see ```issueForm.py.example```
 2. Run the included schema file ``` issueTable.sql ``` 
 3. Add ```embedFeedback.js``` to site and create ```FEEDBACK_FORM_URL``` var in your page with the url to the deployed Feedback app.
 
 EX:
 
 ```
-	<script>FEEDBACK_FORM_URL="http://127.0.0.1:5000"</script>
+	<script>FEEDBACK_FORM_URL="http://0.0.0.0:5000"</script>
  	<script src="embedFeedback.js"></script>
 ```
 
@@ -30,7 +32,7 @@ EX:
 		("...","..."),
 	)
 ```
-7. Set SMTP settings for email notifications to be sent to your email address. 
+7. Set SMTP settings for email notifications to be sent to your email address. or configure settings file to work with your emailing library.
 
 ...see ```settings.py.example```. Make sure to remove ```.example``` from file name for production.
 

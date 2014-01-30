@@ -1,0 +1,218 @@
+Dropdown
+*Bug Report					
+*Feature/Enhancement Request 			
+*Data Request 					
+*Error Report (Inaccurate info, data, etc.) 	
+*Technical Support
+*Login/Password
+*General Inquiry
+*Other
+
+[Leave these off for now. If they are highly used under General Inquiry or Other we can add them. 
+Wanted to document them here for future reference if need be] *Problems/Feedback about Website
+*Design/Ease of Use
+*Unexpected Error
+*Software/Hardware Compatibility
+*Website Loading/Displaying Issue
+*Training
+
+(Request Data)--clarify --to be added to site; to receive personally
+------------------------------------------------------------------------------------
+Ours:
+-Change email from devops to respective site
+--RI DataHUB thank you page: Email=questions@ridatahub.org and DataHUB logo
+--Profiles thank you page: Email=profiles@provplan.org and ProvPlan logo
+-Information to collect in database: Users operating system, users browser, URL...
+-Change button from Send Report to Submit
+
+******
+Header text:
+Thanks for using [The DataHUB/RI Community Profiles]. We welcome any feedback.
+Use this form to submit bug reports, usability issues and feature suggestions directly to the 
+development team. We appreciate you taking the time to let us know. 
+
+[Use this form to submit general inquiries, report bugs, or request additional assistance.]
+
+******
+Thank You submission text:
+Thank You! 
+We have received your submission.
+
+Thank you for your feedback. You can expect a response to your inquiry within 2-3 business
+days. If you need additional assistance please email us at profiles@provplan.org [or questions 
+@ridatahub.org]
+
+[left off: To contact us by phone, please call 401-455-8880.]
+
+******
+Terms and Conditions: [Option 1]
+By submitting a report or providing information or suggestions, you 
+agree that any contents of your submission are not confidential to you 
+or any third party, and The Providence Plan shall have the unlimited royalty-free, 
+irrevocable, and perpetual right, for any purpose whatsoever, to use, reproduce, 
+modify, display, distribute, and make derivative works of any information, 
+ideas, concepts, or know-how you provide without any obligation to you.
+
+The Providence Plan will not use the information collected here for future marketing
+or promotional contacts or other communications beyond the scope of this transaction. 
+The e-mail address you provide will only be used to contact you regarding this report. 
+
+******
+Terms and Conditions: [Option 2 If we want short and sweet] 
+Any information or suggestions you provide at this site shall be deemed to be non-confidential. 
+The Providence Plan shall be free to use such information on an unrestricted basis.
+
+******
+First Stab at descriptions for each topic
+Descriptions:
+*Bug Report	
+Please be as clear and precise as possible about the bug you encountered. Helpful information
+includes: Brief summary of the problem, steps needed to reproduce the problem, what you expected to 
+happen, what happened instead, etc. 
+
+
+*Feature/Enhancement Request 
+Your feedback helps us make a better product. Please be as clear and precise as possible about 
+the feature/enhancement you would like to see added. Helpful information includes: Brief summary 
+of feature, how would you like the feature to work, why the feature is important to your work, etc.
+ 
+
+*Data Request 
+Please provide a summary of the data you would like to see added to the website. Helpful 
+information includes: Source for the original data.
+
+
+*Error Report (Inaccurate information, data, etc.) 
+Please describe the inaccuracy you encountered. Helpful information includes: Which piece
+of information on the webpage was inaccurate, why you believe the information to be inaccurate, etc.
+
+
+*Technical Support
+Please provide a clear and precise summary of the technical support you would like to receive.
+
+
+*Login/Password Issue
+Please describe the issue you are encountering with a login or password. DO NOT include private 
+information in this request and NEVER include your password.
+
+
+*General Inquiry
+If you have a general question or comment please describe that here.
+
+
+*Other
+If your feedback or concern does not fit into one of the existing topics please provide your comment
+here.
+
+
+When reporting errors or omissions, please be as clear and precise as possible about 
+the problem. If you are reporting an error in the standard or technical report, please
+provide exact version numbers and relevant URLs if possible.
+
+ie Feature report: 
+*******Enhancement / FMR*********
+ Brief title for your desired feature:
+ How would you like the feature to work?
+ Why is this feature important to you?
+ie Bug Report:
+******BUG******
+Concise problem statement:
+Steps to reproduce bug:
+ 1.
+ 2.
+ 3.
+ Results:
+ Expected results:
+------------------------------------------------------------------------------------
+Adobe's: https://www.adobe.com/cfusion/mmform/index.cfm?name=wishform
+Use this form to request new features or suggest modifications to existing features. 
+You can also use this form to report suspected bugs.
+
+We normally do not send personal replies to feature requests or bug reports. 
+We do, however, read each and every message. We use the information to improve 
+our products and services. Your comments, suggestions, and ideas for improvements 
+are very important to us. We appreciate you taking the time to send us this 
+information.
+
+Note: If you need technical support, please visit our Support Home page for 
+information about your support options. 
+
+**********************
+When you toggle an issue in adobe text appears in form box. Do we want it to appear
+above in blue? 
+ie Feature report: 
+*******Enhancement / FMR*********
+ Brief title for your desired feature:
+ How would you like the feature to work?
+ Why is this feature important to you?
+ie Bug Report:
+******BUG******
+Concise problem statement:
+Steps to reproduce bug:
+ 1.
+ 2.
+ 3.
+ Results:
+ Expected results:
+
+
+Terms and Conditions
+
+You agree that any feature information, Ideas, or other submission you provide to 
+Adobe below ("Idea"), is or will be under and subject to the conditions set forth 
+herein. You represent and affirm that you have read and understand these terms. You 
+represent and affirm that you are 18 years of age or older. You agree that by 
+submitting your Idea, you acknowledge and agree that any such Idea is nonconfidential,
+and that Adobe has no obligation to return anything submitted, respond to, or confirm 
+receipt of your Idea. You warrant that no other person or corporation has a property 
+interest in the submitted Idea. You understand and acknowledge that Adobe may itself 
+be developing and creating similar Ideas, and/or that Adobe may have received or may 
+someday receive similar Ideas from others, and that existing or planned products and 
+services independently developed without use of your Idea may contain Ideas or 
+concepts similar or identical to those you submit. You acknowledge and agree that 
+your submission shall not preclude Adobe from developing or acquiring such Ideas 
+without obligation to you. Notwithstanding anything to the contrary herein, Adobe 
+shall be free to use any Idea that you submit on a perpetual, royalty-free basis, 
+for any purpose whatsoever, including use, modification, display, and distribution, 
+and/or in the development, manufacture, marketing, and maintenance of Adobe products 
+and services without any obligation to you.
+
+
+------------------------------------------------------------------------------------
+Unicode: http://unicode.org/reporting.html
+To report errors, respond to Public Review Issues, or to contact the Unicode office 
+with general inquiries about the Unicode Consortium or its publications, please use 
+this form. Be sure to select the correct type for your message from the pulldown list.
+We do not use an auto-responder. Each report is reviewed by a staff member in our 
+office. You can expect an acknowledgement of your report within 2-3 business days. 
+Follow-up will depend on the type of issue you are reporting.
+
+When reporting errors or omissions, please be as clear and precise as possible about 
+the problem. If you are reporting an error in the standard or technical report, please
+provide exact version numbers and relevant URLs if possible.
+
+
+By submitting a bug report or patch, or providing information or suggestions, you 
+agree that any contents of your submission are not proprietary or confidential to you 
+or any third party, and the Unicode Consortium shall have the unlimited free, 
+irrevocable, worldwide and perpetual right, for any purpose, to use, reproduce, 
+modify, disclose, distribute, and make derivative works of any code, information, 
+ideas, concepts, or know-how you provide.
+The Unicode Consortium will not use the information collected here for future marketing
+or promotional contacts or other communications beyond the scope of this transaction. 
+In particular, a valid e-mail address is requested in the form. The address you give us 
+will only be used to contact you regarding this report. If you do not or cannot supply an 
+e-mail address, we will have no means of contacting you for further information or 
+resolution of your report.
+
+
+------------------------------------------------------------------------------------
+Some example sites used:
+Adobe: https://www.adobe.com/cfusion/mmform/index.cfm?name=wishform
+Apple form: http://www.apple.com/feedback/iphone.html
+Apple disclaimer: http://www.apple.com/legal/intellectual-property/policies/ideas.html
+Unicode: http://unicode.org/reporting.html
+Madcap: https://www.madcapsoftware.com/feedback/bugs.aspx
+Twitter: https://support.twitter.com/forms/general
+Kirix: http://www.kirix.com/help/feedback.html
+Magicc: http://www.magicc.org/about/contact

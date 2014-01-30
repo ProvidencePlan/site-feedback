@@ -6,7 +6,7 @@ import time
 from datetime import datetime
 import psycopg2
 import json
-from provplan_email_lib import *
+#import you email lib here
 
 @app.route("/") # listens at this url
 def get_template():
@@ -80,6 +80,8 @@ def add_record(url, issue_type, name, email, content, follow_up, send_copy, user
 
 	return True
 
+
+#Include your own method to send email notification here
 def send_mail(url, issue_type, username, email, content, follow_up, user_agent):
     smtp_server = app.config['SMTP_SERVER']
     smtp_port = app.config['SMTP_PORT']
