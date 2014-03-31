@@ -14,7 +14,7 @@ Requires Flask, postgres... See requirements.txt
 5. Add ```embedFeedback.js``` to site and create ```FEEDBACK_FORM_URL``` var in your page with the url to the deployed Feedback app.
 	*	EX:
     		```
-              <script>FEEDBACK_FORM_URL="http://0.0.0.0:5000"</script>
+              <script>FEEDBACK_FORM_URL="http://0.0.0.0:5000"</script>    
               <script src="embedFeedback.js"></script>
            ```
             
