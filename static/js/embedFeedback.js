@@ -120,6 +120,7 @@
 
 
 /*------Begin Embedding Feedback-------------------------------------------------------*/
+
 $d(function(){
 	var feedback_btn = document.getElementById("site-feedback");
 	feedback_btn.onclick = function(){
@@ -144,7 +145,7 @@ $d(function(){
 	/*-----Insert Iframe --------------------------*/
 		var frame = document.createElement('iframe');
 		frame.id = "feedback-frame";
-		var fw = 590;
+		var fw = 620;
 		var fh = 473;
 		frame.src = FEEDBACK_FORM_URL;
 		frame.src += "?s=" + encodeURIComponent(window.location);
