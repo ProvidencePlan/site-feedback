@@ -21,6 +21,9 @@ EX:
 ```
 
 4.You will need to create a dom element with the id ```site-feedback```. This will enable the feedback form to open in a lightbox.
+	*EX: ```<a href="#" id="site-feedback"><span>Send us Feedback</span></a>``` 
+	*EX: ```<a href="#" id="site-feedback"><img src="static/images/feedbackBtn.png" alt="feedback"></a>```
+
 5. Within ```settings.py``` you will need to add your specs to the database info.
 6. In the same file adjust the ```TOPICS``` to populate the forms topic options with your own options.
 
