@@ -192,25 +192,18 @@ function sendForm(form){
 			data: $(form).serialize(),
 			dataType:"json",
 			success: function(data) {
-				if(data.status == "success"){
-					status = "success";
-					displayStatusToUser(status);	
-				}
-				else if(data.status == "error"){
-					status = "error";
-					displayStatusToUser(status);
-				}
+				displayStatusToUser(data.status);
 		    },
 		    error:function(jqXHR, textStatus, errorThrown){
 		    },
 		    statusCode: {
 		    	404: function(){
-		    		status = 404;
-		    		displayStatusToUser(status);
+		
+		    		displayStatusToUser(400);
 		    	},//end 404
 		    	500: function(){
-		    		status = 500;
-		    		displayStatusToUser(status);
+		
+		    		displayStatusToUser(500);
 		    	}//end 500
 		    }//end status code
 		})

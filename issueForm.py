@@ -61,12 +61,11 @@ def process_form():
 	try:
 
 		add_record(url, issue, username, email, content, follow_up, send_copy, user_agent)
-		send_mail(url, issue, username, email, content, follow_up, user_agent)
+		send_mail(url, issue, username, email, content, follow_up,  send_copy, user_agent)
 
 		return json.dumps({'status':'success'})
 
 	except Exception as e:
-		print e
 		return json.dumps({'status':'error'})
 
 def add_record(url, issue, name, email, content, follow_up, send_copy, user_agent):
@@ -78,20 +77,28 @@ def add_record(url, issue, name, email, content, follow_up, send_copy, user_agen
 	cursor = connection.cursor()
 
 	#store values in db
-	info = (str(url), str(issue), str(name), str(email), str(content), follow_up, send_copy, str(user_agent))
-	query = "INSERT INTO issue (url, issue_type, user_name, user_email, content, follow_up, send_copy, user_agent) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-	cursor.execute(query, info)
-
+	cursor.execute("""INSERT INTO issue (url, issue_type, user_name, user_email, content, follow_up, send_copy, user_agent) 
+	         		  VALUES (%(url)s, %(issue)s, %(name)s, %(email)s, %(content)s, %(follow_up)s, %(send_copy)s, %(user_agent)s)""", {
+	         'url': str(url),
+	         'issue': str(issue),
+	         'name': str(name),
+	         'email':  str(email),
+	         'content': str(content),
+	         'follow_up': follow_up,
+	         'send_copy': send_copy,
+	         'user_agent': str(user_agent)
+	         })
+	
 	#commit changes to the db
 	connection.commit()
-
 	#Always close communication with db
+
 	cursor.close()
 	connection.close()
 
 	return True
 
-def send_mail(url, issue, username, email, content, follow_up, user_agent):
+def send_mail(url, issue, username, email, content, follow_up, send_copy, user_agent):
     smtp_server = app.config['SMTP_SERVER']
     smtp_port = app.config['SMTP_PORT']
     smtp_user = app.config['SMTP_USER']
@@ -110,11 +117,12 @@ def send_mail(url, issue, username, email, content, follow_up, user_agent):
     Email(optional): {3}\n
     Content: {4}\n
     Follow up: {5}\n
-    UserAgent: {6}
-    """.format(url, issue, username, email, content, follow_up, user_agent)
+    Send an email of copy to user: {6}\n
+    UserAgent: {7}
+    """.format(url, issue, username, email, content, follow_up, send_copy, user_agent)
 
     devops_address = app.config['DEVOPS_ADDRESS']
-
+    
     e = Emailer(None, smtp_server, smtp_port, smtp_user, smtp_password)
     e.send_email(to_addresses=addresses, subject="Feedback Form", body=message, from_address=from_addr)
     e.send_email(to_addresses=devops_address, subject="Feedback Form", body=message, from_address=from_addr)
