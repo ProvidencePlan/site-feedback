@@ -223,24 +223,24 @@ function displayStatusToUser(status){
 	terms.remove();
 	messageBox.show();
 
-	if(status == "success"){
-		successMess.show();
-	}
-	else if(status == "error"){
-		errorMess.show();
-		statusMess.append("We did not recieve your submission. " + errText);
-	}
-	else if(status == 404){
-		errorMess.show();
-		statusMess.append("404 Not Found. We are not able to locate this page at this time. " + errText);
-	}
-	else if(status == 500){
-		errorMess.show();
-		statusMess.append("500 Internal Server Error. Our server has encountered a problem. " + errText);
-	}
-	else{
-		errorMess.show();
-		statusMess.append("We have encountered a problem processing your request. " + errText);
+	switch(status)
+	{
+		case "success":
+			successMess.show();
+			break;
+		case "error":
+			errorMess.show();
+			statusMess.append("We did not recieve your submission. " + errText);
+			break;
+		case 404:
+			errorMess.show();
+			statusMess.append("404 Not Found. We are not able to locate this page at this time. " + errText);
+		case 500:
+			errorMess.show();
+			statusMess.append("500 Internal Server Error. Our server has encountered a problem. " + errText);
+		default:
+			errorMess.show();
+			statusMess.append("We have encountered a problem processing your request. " + errText);
 	}
 }
 
