@@ -250,7 +250,7 @@ input:focus {
 
 #container{
 	width: 618px;
-	height: 463px;
+	height: 471px;
 	font-size: 11px;
 	background-color: #fff;
 	border: 1px solid #e3e3e3;
@@ -356,12 +356,12 @@ input:focus {
 
 #follow-up label{
 	width: 212px;
-	margin-top: 6px;
+	margin-top: 12px;
 	margin-right: 5px;
 }
 
 #follow-up .ckbox-inp{
-	margin-top: 6px;
+	margin-top: 12px;
 }
 
 #send-copy{
@@ -370,10 +370,11 @@ input:focus {
 
 #send-copy label{
 	width: 434px;
+	margin-top: 10px;
 }
 
 #send-copy .ckbox-inp{
-	margin-top: 0px;
+	margin-top: 10px;
 }
 
 #submit-box{
