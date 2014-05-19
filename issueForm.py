@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 app.config.from_object('settings')
 
-import time
+from time import gmtime, strftime
 from datetime import datetime
 import psycopg2
 import json
@@ -98,34 +98,54 @@ def add_record(url, issue, name, email, content, follow_up, send_copy, user_agen
 
 	return True
 
-def send_mail(url, issue, username, email, content, follow_up, send_copy, user_agent):
+def send_mail(url, issue, username, useremail, content, follow_up, send_copy, user_agent):
     smtp_server = app.config['SMTP_SERVER']
     smtp_port = app.config['SMTP_PORT']
     smtp_user = app.config['SMTP_USER']
     smtp_password = app.config['SMTP_PASS']
 
-    if 'profiles' in url:
-        addresses = app.config['PROFILES_ADDRESS']
-    elif 'ridatahub' in url:
-        addresses = app.config['RIDATAHUB_ADDRESS']
+    curr_date = strftime("%a, %d %b %Y %X +0000", gmtime())
 
+    #Format message content
     from_addr = app.config['FROM_ADDRESS']
     message = """
-    Submitted from: {0}\n
-    Issue Topic: {1}\n
-    Username(optional): {2}\n
-    Email(optional): {3}\n
-    Content: {4}\n
-    Follow up: {5}\n
-    Send an email of copy to user: {6}\n
-    UserAgent: {7}
-    """.format(url, issue, username, email, content, follow_up, send_copy, user_agent)
-
-    devops_address = app.config['DEVOPS_ADDRESS']
-    
+    Date: {0}\n
+    Submitted from: {1}\n
+    Topic: {2}\n
+    Name(optional): {3}\n
+    Email(optional): {4}\n
+    Content: {5}\n
+    Follow up: {6}\n
+    Send an email of copy to user: {7}\n
+    UserAgent: {8}
+    """.format(curr_date, url, issue, username, useremail, content, follow_up, send_copy, user_agent)
+ 
     e = Emailer(None, smtp_server, smtp_port, smtp_user, smtp_password)
-    e.send_email(to_addresses=addresses, subject="Feedback Form", body=message, from_address=from_addr)
-    e.send_email(to_addresses=devops_address, subject="Feedback Form", body=message, from_address=from_addr)
+
+    if 'profiles' in url:
+        addresses = app.config['PROFILES_ADDRESS']
+        subject = "Feedback - Community Profiles"
+        for a in addresses:
+        	e.send_email(to_addresses=a, subject=subject, body=message, from_address=from_addr)
+    elif 'ridatahub' in url:
+        addresses = app.config['RIDATAHUB_ADDRESS']
+        subject = "Feedback - RI DataHub"
+        for a in addresses:
+        	e.send_email(to_addresses=a, subject=subject, body=message, from_address=from_addr)
+
+    if send_copy == "yes":
+    	message = """
+	    Here is a copy of your feedback message.\n
+		Submitted from: {0}\n
+		Topic: {1}\n
+		Your name: {2}\n
+		Email: {3}\n
+		Message: {4}\n
+		Date: {5}\n
+		You should recieve a response within 2-3 business days, thank you.
+		""".format(subject, issue, username, useremail, content, curr_date)
+    	e.send_email(to_addresses=useremail, subject=subject, body=message, from_address=from_addr)
+
     e.disconnect()
 
 if __name__ == "__main__":
