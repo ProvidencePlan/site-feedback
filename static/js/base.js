@@ -31,62 +31,54 @@ $(function() {
 /*----------click Events------------------------------------------*/
 $('#submit-btn').mouseover(function(){
 	$(this).addClass('btn-lite');
-})
+});
 
 $('#submit-btn').mouseout(function(){
 	$(this).removeClass('btn-lite');
-})
+});
 
 $("#name-inp, #email-inp, #content-inp").mouseover(function(){
 	$(this).addClass('inp-lite');
-})
+});
 
 $("#name-inp, #email-inp, #content-inp").mouseout(function(){
 	$(this).removeClass('inp-lite');
-})
+});
 
 $("#tpp-img").click(function(){
 	window.open("http://provplan.org/index.php/");
-})
+});
 
 $("#dataHub-img").click(function(){
 	window.open("http://ridatahub.org/");
-})
+});
 /*---------------------------------------------------------------*/
 
 
 
-/*-----When new topic is selected--------------------------------*/
+/*-----When new topic is selected (from dropdown)----------------*/
 
 $('#issue').change(function(){
 	var selectedVal = $('#issue').val();
 	var contentBox = $("#content-inp");
+	var option_text = {
+					   "opt1" : "Please be as clear and precise as possible about the bug you encountered. Helpful information includes: Brief summary of the problem, steps needed to reproduce the problem, what you expected to happen, what happened instead, etc. ",
+					   "opt2" : "Please provide a summary of the data you would like to see added to the website. Helpful information includes: Source for the original data.",
+					   "opt3" : "Please describe the inaccuracy you encountered. Helpful information includes: Which piece of information on the webpage was inaccurate, why you believe the information to be inaccurate, etc.",
+					   "opt4" : "Your feedback helps us make a better product. Please be as clear and precise as possible about the feature/enhancement you would like to see added. Helpful information includes: Brief summary of feature, how would you like the feature to work, why the feature is important to your work, etc.",
+					   "opt5" : "Please describe the issue you are encountering with a login or password. DO NOT include private information in this request and NEVER include your password.",
+					   "opt6" : "Please provide a clear and precise summary of the technical support you would like to receive.",
+					   "opt7" : "If you have a general question or comment please describe that here.",
+					   "opt8" : "If your feedback or concern does not fit into one of the existing topics please provide your comment here."
+					  }
 
-	if(selectedVal == "opt1"){
-		contentBox.attr("placeholder", "Please be as clear and precise as possible about the bug you encountered. Helpful information includes: Brief summary of the problem, steps needed to reproduce the problem, what you expected to happen, what happened instead, etc. ");
+	for(var key in option_text){
+		var val = option_text[key];
+		if (selectedVal == key){
+			contentBox.attr("placeholder", val)
+		}
 	}
-	else if(selectedVal == "opt2"){
-		contentBox.attr("placeholder", "Please provide a summary of the data you would like to see added to the website. Helpful information includes: Source for the original data.");
-	}
-	else if(selectedVal == "opt3"){
-		contentBox.attr("placeholder", "Please describe the inaccuracy you encountered. Helpful information includes: Which piece of information on the webpage was inaccurate, why you believe the information to be inaccurate, etc.");
-	}
-	else if(selectedVal == "opt4"){
-		contentBox.attr("placeholder", "Your feedback helps us make a better product. Please be as clear and precise as possible about the feature/enhancement you would like to see added. Helpful information includes: Brief summary of feature, how would you like the feature to work, why the feature is important to your work, etc.");
-	}
-	else if(selectedVal == "opt5"){
-		contentBox.attr("placeholder", "Please describe the issue you are encountering with a login or password. DO NOT include private information in this request and NEVER include your password.");
-	}
-	else if(selectedVal == "opt6"){
-		contentBox.attr("placeholder", "Please provide a clear and precise summary of the technical support you would like to receive.");
-	}
-	else if(selectedVal == "opt7"){
-		contentBox.attr("placeholder", "If you have a general question or comment please describe that here.");
-	}
-	else if(selectedVal == "opt8"){
-		contentBox.attr("placeholder", "If your feedback or concern does not fit into one of the existing topics please provide your comment here.");
-	}
-})
+});
 /*---------------------------------------------------------------*/
 
 
