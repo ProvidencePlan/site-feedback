@@ -112,7 +112,7 @@ def send_mail(url, issue, username, useremail, content, follow_up, send_copy, us
     Date: {0}\n
     Submitted from: {1}\n
     Topic: {2}\n
-    User's name(optional): {3}\n
+    Name(optional): {3}\n
     Email(optional): {4}\n
     Content: {5}\n
     Follow up: {6}\n
@@ -135,7 +135,7 @@ def send_mail(url, issue, username, useremail, content, follow_up, send_copy, us
 
     if send_copy == "yes":
     	message = """
-	    Here is a copy of your feedback:\n
+	    Here is a copy of your feedback message.\n
 		Submitted from: {0}\n
 		Topic: {1}\n
 		Your name: {2}\n
@@ -143,7 +143,7 @@ def send_mail(url, issue, username, useremail, content, follow_up, send_copy, us
 		Message: {4}\n
 		Date: {5}\n
 		You should recieve a response within 2-3 business days, thank you.
-		""".format(url, issue, username, useremail, content, curr_date)
+		""".format(subject, issue, username, useremail, content, curr_date)
     	e.send_email(to_addresses=useremail, subject=subject, body=message, from_address=from_addr)
 
     e.disconnect()
