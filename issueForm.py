@@ -33,21 +33,13 @@ def process_form():
 	email = str(request.form.get("user-email"))
 	content = str(request.form.get("issue-content")) 
 	follow_up_response = request.form.get("follow-up")
-	send_copy_response = request.form.get("send-copy")
+	send_copy = False
 
 	follow_up = 'no'
-	send_copy = 'no'
-
 	if follow_up_response == 'none':
 		follow_up = 'no'
 	elif follow_up_response == 'on':
 		follow_up = 'yes'
-
-	if send_copy_response == 'none':
-		send_copy = 'no'
-	elif send_copy_response == 'on':
-		send_copy = 'yes'
-
 
 	if username.strip() == '':
 		username = 'Anonymous'
@@ -61,7 +53,7 @@ def process_form():
 	try:
 
 		add_record(url, issue, username, email, content, follow_up, send_copy, user_agent)
-		send_mail(url, issue, username, email, content, follow_up,  send_copy, user_agent)
+		send_mail(url, issue, username, email, content, follow_up, user_agent)
 
 		return json.dumps({'status':'success'})
 
@@ -98,7 +90,7 @@ def add_record(url, issue, name, email, content, follow_up, send_copy, user_agen
 
 	return True
 
-def send_mail(url, issue, username, useremail, content, follow_up, send_copy, user_agent):
+def send_mail(url, issue, username, useremail, content, follow_up, user_agent):
     smtp_server = app.config['SMTP_SERVER']
     smtp_port = app.config['SMTP_PORT']
     smtp_user = app.config['SMTP_USER']
@@ -107,43 +99,40 @@ def send_mail(url, issue, username, useremail, content, follow_up, send_copy, us
     curr_date = strftime("%a, %d %b %Y %X +0000", gmtime())
 
     #Format message content
-    from_addr = app.config['FROM_ADDRESS']
+    from_addr = ''
     message = """
     Date: {0}\n
     Submitted from: {1}\n
     Topic: {2}\n
     Name(optional): {3}\n
-    Email(optional): {4}\n
+    Email: {4}\n
     Content: {5}\n
     Follow up: {6}\n
-    Send an email of copy to user: {7}\n
-    UserAgent: {8}
-    """.format(curr_date, url, issue, username, useremail, content, follow_up, send_copy, user_agent)
+    UserAgent: {7}
+    """.format(curr_date, url, issue, username, useremail, content, follow_up, user_agent)
  
     e = Emailer(None, smtp_server, smtp_port, smtp_user, smtp_password)
 
     if 'profiles' in url:
-        addresses = app.config['PROFILES_ADDRESS']
-        subject = "Feedback - Community Profiles"
-        for a in addresses:
+        to_addr = app.config['PROFILES_ADDRESS']
+        from_addr = 'RI Community Profiles <do-not-reply@profiles.org>'
+        subject = "Feedback - RI Community Profiles"
+        for a in to_addr:
         	e.send_email(to_addresses=a, subject=subject, body=message, from_address=from_addr)
     elif 'ridatahub' in url:
-        addresses = app.config['RIDATAHUB_ADDRESS']
+        to_addr = app.config['RIDATAHUB_ADDRESS']
+        from_addr = 'RI Datahub <do-not-reply@ridatahub.org>'
         subject = "Feedback - RI DataHub"
-        for a in addresses:
+        for a in to_addr:
         	e.send_email(to_addresses=a, subject=subject, body=message, from_address=from_addr)
 
-    if send_copy == "yes":
+    if follow_up == "yes":
     	message = """
-	    Here is a copy of your feedback message.\n
+    	We have received your feedback submission.\n
 		Submitted from: {0}\n
-		Topic: {1}\n
-		Your name: {2}\n
-		Email: {3}\n
-		Message: {4}\n
-		Date: {5}\n
-		You should recieve a response within 2-3 business days, thank you.
-		""".format(subject, issue, username, useremail, content, curr_date)
+		You should recieve a response within 2-3 business days, thank you.\n
+		If you have received this message in error, please disregard.
+		""".format(subject)
     	e.send_email(to_addresses=useremail, subject=subject, body=message, from_address=from_addr)
 
     e.disconnect()

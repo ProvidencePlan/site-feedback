@@ -52,6 +52,19 @@ $("#tpp-img").click(function(){
 $("#dataHub-img").click(function(){
 	window.open("http://ridatahub.org/");
 });
+
+$('#followup-input').click(function(){
+	if($('#followup-input').is(':checked')){
+		$('#email-is-optional').hide();
+		$('#email-is-required').show();
+		console.log("checked");
+	}
+	else{
+		$('#email-is-optional').show();
+		$('#email-is-required').hide();
+	}
+});
+
 /*---------------------------------------------------------------*/
 
 
@@ -107,9 +120,8 @@ $("#issue-form").submit(function(e){
 			/*b*/if(validateEmail(email_input) == true || email_input == ""){
 					//check that email is valid
 					
-				/*c*/if(followup_input.is(':checked')  || sendcopy_input.is(":checked")){
-						//check that followup is selected
-						
+				/*c*/if(followup_input.is(':checked')){
+						//check that followup is selected						
 					/*d*/if(email_input.length > 0){
 							//check that the email is entered
 							

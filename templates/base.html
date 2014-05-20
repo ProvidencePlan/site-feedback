@@ -40,7 +40,8 @@
 				</div>
 
 				<div class="form-field" id="email">
-					<label>Your Email: (optional)</label>
+					<label id="email-is-optional">Your Email: (optional)</label>
+					<label id="email-is-required">Your Email: (required)</label>
 					<input id="email-inp" name="user-email"/>
 					<span id="inval-email">*Please enter a valid email </span>
 				</div>
@@ -54,16 +55,18 @@
 				<div class="form-field" id="follow-up">
 					<input id="followup-input" class="ckbox-inp" type="checkbox" name="follow-up"/>
 					<label>Would you like a follow up response?</label>
-				</div>
 
+					<div class="form-field" id="submit-box">
+						<input id="submit-btn" type="submit" value="Submit">
+					</div>
+				</div>
+				<!--
 				<div class="form-field" id="send-copy">
 					<input id="sendcopy-input" class="ckbox-inp" type="checkbox" name="send-copy"/>
 					<label>Would you like to receive a copy of your message sent to your email?</label>
 				</div>
-
-				<div class="form-field" id="submit-box">
-					<input id="submit-btn" type="submit" value="Submit">
-				</div>
+				-->
+				
 
 				<!-- hidden inputs to be submitted w/form-->
 				<input type="hidden" name="ref" value='{{referer}}'>
