@@ -1,5 +1,5 @@
 
-/*------------------ DOC READY ---------------------------------------------------*/
+/*------------------ DOC READY CODE---------------------------------------------------*/
 /*
 	jQuery's document.ready/$(function(){}) should
 	you wish to use a cross-browser DOMReady solution

@@ -57,11 +57,11 @@ $('#followup-input').click(function(){
 	if($('#followup-input').is(':checked')){
 		$('#email-is-optional').hide();
 		$('#email-is-required').show();
-		console.log("checked");
 	}
 	else{
 		$('#email-is-optional').show();
 		$('#email-is-required').hide();
+		
 	}
 });
 
