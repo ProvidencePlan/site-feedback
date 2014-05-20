@@ -250,12 +250,10 @@ input:focus {
 
 #container{
 	width: 618px;
-	height: 471px;
+	height: 453px;
 	font-size: 11px;
 	background-color: #fff;
-	border: 1px solid #e3e3e3;
-	/*margin: 0 auto;*/
-	
+	border: 1px solid #e3e3e3;	
 }
 
 #container h1{
@@ -312,7 +310,7 @@ input:focus {
 
 #content-inp{
 	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 2px;
 }
 
 #desc-label{
@@ -329,6 +327,10 @@ input:focus {
 	color:red;
 }
 
+#email-is-required{
+	display: none;
+}
+
 #inval-email{
 	display: none;
 	margin-left: 106px;
@@ -337,7 +339,7 @@ input:focus {
 
 #content-err{
 	display: none;
- 	margin-left: 292px;
+ 	margin-left: 318px;
  	color: red;
 
 }
@@ -356,29 +358,17 @@ input:focus {
 
 #follow-up label{
 	width: 212px;
-	margin-top: 12px;
+	margin-top: 5px;
 	margin-right: 5px;
 }
 
 #follow-up .ckbox-inp{
-	margin-top: 12px;
-}
-
-#send-copy{
-	height: 10px;
-}
-
-#send-copy label{
-	width: 434px;
-	margin-top: 10px;
-}
-
-#send-copy .ckbox-inp{
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 #submit-box{
-	height: 25px;
+	height: 0px;
+	margin-top: 90px;
 }
 
 #submit-btn{
