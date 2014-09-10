@@ -112,7 +112,7 @@ def send_mail(url, issue, username, useremail, content, follow_up, user_agent):
     if 'profiles' in url:
         e = Emailer(None, smtp_server, smtp_port, app.config['PROFILES_SMTP_USER'], app.config['PROFILES_SMTP_PASS'])
         to_addr = app.config['PROFILES_ADDRESS']
-        from_addr = 'RI Community Profiles <do-not-reply-profiles@provplan.org>'
+        from_addr = 'RI Community Profiles <do-not-reply@profiles.provplan.org>'
         subject = "Feedback - RI Community Profiles"
         for a in to_addr:
         	e.send_email(to_addresses=a, subject=subject, body=message, from_address=from_addr)

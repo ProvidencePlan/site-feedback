@@ -130,10 +130,9 @@ $d(function(){
 	/*-----transparent div------------------------*/
 		var bkgrBox = document.createElement("div");
 		bkgrBox.id = "feedback-box";
-		bkgrBox.style.position = "absolute";
+		bkgrBox.style.position = "fixed";
 		bkgrBox.style.backgroundColor = "#283540";
 		bkgrBox.style.opacity = 0.5;
-		bkgrBox.style.position = "absolute";
 		bkgrBox.style.top = "0px";
 		bkgrBox.style.left = "0px";
 		bkgrBox.style.zIndex = 9999;
@@ -151,7 +150,7 @@ $d(function(){
 		frame.src += "?s=" + encodeURIComponent(window.location);
 		frame.style.width = fw + "px";
 		frame.style.height = fh + "px";
-		frame.style.position = "absolute";
+		frame.style.position = "fixed";
 		frame.style.zIndex = 10000;
 		frame.style.padding = 0;
 		frame.style.margin = 0;
@@ -169,7 +168,7 @@ $d(function(){
 		exitBtn.src = FEEDBACK_FORM_URL + "/static/images/closeBtn.png";
 		exitBtn.style.width = 20 + "px";
 		exitBtn.style.height = 20 + "px";
-		exitBtn.style.position = "absolute";
+		exitBtn.style.position = "fixed";
 		exitBtn.style.zIndex = 12000;
 		exitBtn.style.opacity = .7;
 		exitBtn.style.cursor="pointer";
@@ -214,8 +213,8 @@ $d(function(){
 	function positionElements(bkgrBox, frame, exitBtn, fh, fw){
 		var wW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 		var wH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-		bkgrBox.style.width = wW + "px";
-		bkgrBox.style.height = wH + "px";
+		bkgrBox.style.width = "100%";
+		bkgrBox.style.height = "100%";
 		frame.style.top = (wH/2)-(fh/2) + "px";
 		frame.style.left = (wW/2)-(fw/2) + "px";
 		exitBtn.style.top = (wH/2)-(fh/2) - 6 + "px";
