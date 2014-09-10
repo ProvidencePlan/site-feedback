@@ -93,8 +93,6 @@ def add_record(url, issue, name, email, content, follow_up, send_copy, user_agen
 def send_mail(url, issue, username, useremail, content, follow_up, user_agent):
     smtp_server = app.config['SMTP_SERVER']
     smtp_port = app.config['SMTP_PORT']
-    smtp_user = app.config['SMTP_USER']
-    smtp_password = app.config['SMTP_PASS']
 
     curr_date = strftime("%a, %d %b %Y %X +0000", gmtime())
 
@@ -111,15 +109,15 @@ def send_mail(url, issue, username, useremail, content, follow_up, user_agent):
     UserAgent: {7}
     """.format(curr_date, url, issue, username, useremail, content, follow_up, user_agent)
  
-    e = Emailer(None, smtp_server, smtp_port, smtp_user, smtp_password)
-
     if 'profiles' in url:
+        e = Emailer(None, smtp_server, smtp_port, app.config['PROFILES_SMTP_USER'], app.config['PROFILES_SMTP_PASS'])
         to_addr = app.config['PROFILES_ADDRESS']
-        from_addr = 'RI Community Profiles <do-not-reply@profiles.org>'
+        from_addr = 'RI Community Profiles <do-not-reply-profiles@provplan.org>'
         subject = "Feedback - RI Community Profiles"
         for a in to_addr:
         	e.send_email(to_addresses=a, subject=subject, body=message, from_address=from_addr)
     elif 'ridatahub' in url:
+        e = Emailer(None, smtp_server, smtp_port, app.config['RIDATAHUB_SMTP_USER'], app.config['RIDATAHUB_SMTP_PASS'])
         to_addr = app.config['RIDATAHUB_ADDRESS']
         from_addr = 'RI Datahub <do-not-reply@ridatahub.org>'
         subject = "Feedback - RI DataHub"
